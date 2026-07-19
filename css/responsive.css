@@ -1,0 +1,362 @@
+
+/* ===========================
+Large Tablet
+=========================== */
+
+@media(max-width:1200px){
+
+.search-box input{
+
+    width:200px;
+
+}
+
+}
+
+/* ===========================
+Tablet
+=========================== */
+
+@media(max-width:992px){
+
+.sidebar{
+
+    left:-260px;
+
+}
+
+.sidebar.show{
+
+    left:0;
+
+}
+
+.main-content{
+
+    margin-left:0;
+
+    width:100%;
+
+}
+
+.top-navbar{
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+}
+
+.welcome-card{
+
+    flex-direction:column;
+
+    text-align:center;
+
+    gap:15px;
+
+}
+
+.dashboard-card{
+
+    margin-bottom:20px;
+
+}
+
+}
+
+/* ===========================
+Mobile
+=========================== */
+
+@media(max-width:768px){
+
+.search-box{
+
+    width:100%;
+
+}
+
+.search-box input{
+
+    width:100%;
+
+}
+
+.right-section{
+
+    width:100%;
+
+    justify-content:space-between;
+
+}
+
+.profile span{
+
+    display:none;
+
+}
+
+.summary-card .row>div{
+
+    margin-bottom:20px;
+
+}
+
+.table{
+
+    font-size:13px;
+
+}
+
+}
+
+/* ===========================
+Small Mobile
+=========================== */
+
+@media(max-width:576px){
+
+.main-content{
+
+    padding:15px;
+
+}
+
+.top-navbar{
+
+    padding:15px;
+
+}
+
+.dashboard-card{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.card-icon{
+
+    margin-bottom:10px;
+
+}
+
+.welcome-card{
+
+    padding:20px;
+
+}
+
+}
+
+/* /* ===================================== */
+   /* TABLET */
+/* ===================================== */ */
+
+
+/* @media(max-width:992px){ */
+
+
+/* .sidebar{ */
+
+/* left:-260px; */
+
+/* transition:.3s; */
+
+/* } */
+
+
+/* .sidebar.active{ */
+
+/* left:0; */
+
+/* } */
+
+
+
+/* .main-content{ */
+
+/* margin-left:0; */
+
+/* width:100%; */
+
+/* } */
+
+
+
+/* .search-box{ */
+
+/* display:none; */
+
+/* } */
+
+
+
+/* .welcome-card{ */
+
+/* flex-direction:column; */
+
+/* align-items:flex-start; */
+
+/* gap:20px; */
+
+/* } */
+
+
+
+/* } */
+
+
+/* /* ===================================== */
+   /* MOBILE */
+/* ===================================== */ */
+
+
+/* @media(max-width:768px){ */
+
+
+
+/* .main-content{ */
+
+/* padding:10px; */
+
+/* } */
+
+
+
+/* .top-navbar{ */
+
+/* height:auto; */
+
+/* padding:15px; */
+
+/* flex-wrap:wrap; */
+
+/* gap:15px; */
+
+/* } */
+
+
+
+/* .left-section h2{ */
+
+/* font-size:20px; */
+
+/* } */
+
+
+
+/* .right-section{ */
+
+/* width:100%; */
+
+/* justify-content:flex-end; */
+
+/* } */
+
+
+
+/* .dashboard-card{ */
+
+/* padding:15px; */
+
+/* } */
+
+
+
+/* .card-icon{ */
+
+/* width:50px; */
+
+/* height:50px; */
+
+/* font-size:20px; */
+
+/* } */
+
+
+
+/* .card-content h2{ */
+
+/* font-size:24px; */
+
+/* } */
+
+
+
+/* .welcome-card h2{ */
+
+/* font-size:22px; */
+
+/* } */
+
+
+/* .table{ */
+
+/* font-size:13px; */
+
+/* } */
+
+
+/* .table th, */
+/* .table td{ */
+
+/* white-space:nowrap; */
+
+/* } */
+
+
+
+/* } */
+
+
+/* /* ===================================== */
+   /* SMALL MOBILE */
+/* ===================================== */ */
+
+
+/* @media(max-width:480px){ */
+
+
+/* .profile span{ */
+
+/* display:none; */
+
+/* } */
+
+
+/* .right-section button{ */
+
+/* font-size:16px; */
+
+/* } */
+
+
+
+/* .dashboard-card{ */
+
+/* flex-direction:column; */
+
+/* text-align:center; */
+
+/* } */
+
+
+
+/* .summary-card h5{ */
+
+/* font-size:14px; */
+
+/* } */
+
+
+/* .summary-card h3{ */
+
+/* font-size:20px; */
+
+/* } */
+
+
+/* } */

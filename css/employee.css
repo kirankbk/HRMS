@@ -1,0 +1,726 @@
+/* .emp-photo{ */
+
+/* width:45px; */
+
+/* height:45px; */
+
+/* border-radius:50%; */
+
+/* object-fit:cover; */
+
+/* border:2px solid #ddd; */
+
+/* } */
+/* .status{ */
+
+
+/* padding:5px 12px; */
+
+/* border-radius:20px; */
+
+/* font-size:13px; */
+
+/* font-weight:bold; */
+
+/* } */
+
+
+
+/* .active{ */
+
+/* background:#d4edda; */
+
+/* color:#198754; */
+
+/* } */
+
+
+
+/* .inactive{ */
+
+/* background:#f8d7da; */
+
+/* color:#dc3545; */
+
+/* } */
+
+/* ==========================================
+   HRMS Employee Management
+   employee.css
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+    background:#f4f7fc;
+    color:#333;
+}
+
+/* ==========================================
+   Container
+========================================== */
+
+.container-fluid{
+    padding:30px;
+}
+
+/* ==========================================
+   Card
+========================================== */
+
+.card{
+    border:none;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+}
+
+.card-header{
+    border:none;
+    font-weight:600;
+    font-size:18px;
+    padding:18px 25px;
+}
+
+.card-body{
+    padding:25px;
+}
+
+/* ==========================================
+   Employee Photo
+========================================== */
+
+#photoPreview{
+
+    width:180px;
+
+    height:180px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:5px solid #0d6efd;
+
+    background:#fff;
+
+    transition:.3s;
+}
+
+#photoPreview:hover{
+
+    transform:scale(1.05);
+
+}
+
+#employeePhoto{
+
+    margin-top:15px;
+
+}
+
+/* ==========================================
+   Form
+========================================== */
+
+.form-label{
+
+    font-weight:600;
+
+    color:#444;
+
+}
+
+.form-control,
+.form-select{
+
+    border-radius:10px;
+
+    min-height:45px;
+
+    border:1px solid #ced4da;
+
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    border-color:#0d6efd;
+
+    box-shadow:0 0 8px rgba(13,110,253,.2);
+
+}
+
+/* ==========================================
+   Buttons
+========================================== */
+
+.btn{
+
+    border-radius:10px;
+
+    padding:10px 18px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.btn i{
+
+    margin-right:6px;
+
+}
+
+.btn-success:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.btn-danger:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.btn-warning:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.btn-secondary:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================
+   Search Box
+========================================== */
+
+#searchEmployee{
+
+    border-radius:30px;
+
+    padding:10px 18px;
+
+}
+
+/* ==========================================
+   Table
+========================================== */
+
+.table{
+
+    margin-bottom:0;
+
+}
+
+.table thead{
+
+    white-space:nowrap;
+
+}
+
+.table thead th{
+
+    text-align:center;
+
+    vertical-align:middle;
+
+    font-size:15px;
+
+}
+
+.table tbody td{
+
+    vertical-align:middle;
+
+    text-align:center;
+
+}
+
+.table-hover tbody tr:hover{
+
+    background:#eef6ff;
+
+}
+
+/* ==========================================
+   Employee Image
+========================================== */
+
+.employee-photo{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:2px solid #ddd;
+
+}
+
+/* ==========================================
+   Status Badges
+========================================== */
+
+.badge-active{
+
+    background:#198754;
+
+    color:#fff;
+
+    padding:8px 14px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+}
+
+.badge-inactive{
+
+    background:#dc3545;
+
+    color:#fff;
+
+    padding:8px 14px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+}
+
+/* ==========================================
+   Action Buttons
+========================================== */
+
+.action-btn{
+
+    width:36px;
+
+    height:36px;
+
+    border:none;
+
+    border-radius:50%;
+
+    color:#fff;
+
+    margin:2px;
+
+    cursor:pointer;
+
+}
+
+.view-btn{
+
+    background:#0d6efd;
+
+}
+
+.edit-btn{
+
+    background:#ffc107;
+
+    color:#000;
+
+}
+
+.delete-btn{
+
+    background:#dc3545;
+
+}
+
+.action-btn:hover{
+
+    opacity:.85;
+
+}
+
+/* ==========================================
+   Pagination
+========================================== */
+
+#pagination{
+
+    padding:15px;
+
+}
+
+#pagination button{
+
+    margin:5px;
+
+    border:none;
+
+    padding:8px 14px;
+
+    border-radius:8px;
+
+    background:#0d6efd;
+
+    color:#fff;
+
+}
+
+#pagination button:hover{
+
+    background:#084298;
+
+}
+
+/* ==========================================
+   Responsive
+========================================== */
+
+@media(max-width:992px){
+
+.container-fluid{
+
+    padding:20px;
+
+}
+
+#photoPreview{
+
+    width:150px;
+
+    height:150px;
+
+}
+
+.card-body{
+
+    padding:20px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.card-header{
+
+    text-align:center;
+
+}
+
+#photoPreview{
+
+    width:130px;
+
+    height:130px;
+
+    margin-bottom:20px;
+
+}
+
+.table{
+
+    font-size:14px;
+
+}
+
+.btn{
+
+    width:100%;
+
+    margin-bottom:10px;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.container-fluid{
+
+    padding:12px;
+
+}
+
+.table{
+
+    font-size:12px;
+
+}
+
+.card-header h5{
+
+    font-size:16px;
+
+}
+
+.form-control,
+.form-select{
+
+    min-height:42px;
+
+}
+
+.employee-photo{
+
+    width:45px;
+
+    height:45px;
+
+}
+
+.action-btn{
+
+    width:32px;
+
+    height:32px;
+
+}
+
+}
+
+.toast-message{
+
+    position:fixed;
+
+    top:20px;
+
+    right:20px;
+
+    min-width:260px;
+
+    padding:15px 20px;
+
+    border-radius:8px;
+
+    color:#fff;
+
+    font-weight:600;
+
+    z-index:99999;
+
+    opacity:0;
+
+    transform:translateX(100px);
+
+    transition:.3s;
+
+}
+
+.toast-message.show{
+
+    opacity:1;
+
+    transform:translateX(0);
+
+}
+
+.toast-message.success{
+
+    background:#198754;
+
+}
+
+.toast-message.error{
+
+    background:#dc3545;
+
+}
+
+#loader{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(255,255,255,.7);
+
+    z-index:9999;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+}
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+}
+
+.sidebar{
+    background:#0d6efd;
+    min-height:100vh;
+    color:#fff;
+    padding:30px 20px;
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.logo i{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.logo h3{
+    font-weight:700;
+}
+
+.sidebar ul{
+    list-style:none;
+    padding:0;
+}
+
+.sidebar li{
+    margin-bottom:12px;
+}
+
+.sidebar a{
+    display:block;
+    color:#fff;
+    text-decoration:none;
+    padding:12px 15px;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.sidebar a:hover,
+.sidebar .active a{
+    background:rgba(255,255,255,.18);
+}
+
+.main-content{
+    padding:30px;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.profile img{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.stat-card{
+    background:#fff;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    color:#fff;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.stat-card i{
+    font-size:38px;
+    margin-bottom:12px;
+}
+
+.stat-card h3{
+    font-size:32px;
+    font-weight:700;
+}
+
+.blue{
+    background:#0d6efd;
+}
+
+.green{
+    background:#198754;
+}
+
+.red{
+    background:#dc3545;
+}
+
+.orange{
+    background:#fd7e14;
+}
+
+.toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 3px 15px rgba(0,0,0,.08);
+}
+
+.right-tools{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.search-box{
+    position:relative;
+}
+
+.search-box input{
+    width:260px;
+    padding-right:40px;
+}
+
+.search-box i{
+    position:absolute;
+    top:12px;
+    right:15px;
+    color:#777;
+}
+
+.breadcrumb{
+    margin-bottom:0;
+}

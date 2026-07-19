@@ -1,0 +1,2832 @@
+<!-- ========================================================= -->
+<!-- Recent Employees -->
+<!-- ========================================================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Employee Management</title>
+
+    <!-- Bootstrap -->
+    <!-- Bootstrap -->
+	
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+
+    <link rel="stylesheet" href="css/employee1.css">
+
+</head>
+
+<body>
+<div id="loader">
+
+    Loading...
+
+</div>
+<div class="card shadow-lg border-0 mt-4">
+
+    <div class="card-header bg-primary text-white">
+
+        <div class="d-flex justify-content-between align-items-center">
+
+            <h4 class="mb-0">
+
+                <i class="fa fa-users"></i>
+
+                Recent Employees
+
+            </h4>
+
+            <div>
+
+                <button
+                    class="btn btn-light btn-sm"
+                    id="refreshEmployeeBtn">
+
+                    <i class="fa fa-rotate"></i>
+
+                    Refresh
+
+                </button>
+
+                <a
+                    id="Addbtn"
+                    class="btn btn-success btn-sm">
+
+                    <i class="fa fa-plus"></i>
+                     
+                    Add Employee
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <!-- Search -->
+
+        <div class="row mb-3">
+
+            <div class="col-md-5">
+
+                <div class="input-group">
+
+                    <span class="input-group-text">
+
+                        <i class="fa fa-search"></i>
+
+                    </span>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="employeeSearch"
+                        placeholder="Search Employee">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-responsive">
+
+            <table
+                class="table table-hover table-striped align-middle">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>EmployeeCode</th>
+
+                        <th>Photo</th>
+
+                        <th>FirstName</th>
+
+                        <th>LastName</th>
+
+                        <th>DepartmentID</th>
+
+                        <th>Designation</th>
+
+                        <th>Gender</th>
+                       <th>Mobile</th>
+                        <th>Email</th>
+                        <th width="180">
+                           Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="employeeTableBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <div class="card-footer">
+
+        <div
+            class="d-flex justify-content-between align-items-center">
+
+            <div>
+
+                Showing
+
+                <span id="employeeCount">
+
+                    0
+
+                </span>
+
+                Employees
+
+            </div>
+
+            <nav>
+
+                <ul
+                    class="pagination pagination-sm mb-0"
+                    id="employeePagination">
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- Bootstrap -->
+<!-- ========================================================= -->
+<!-- Employee Profile Modal -->
+<!-- ========================================================= -->
+
+<div class="modal fade"
+     id="employeeProfileModal"
+     tabindex="-1"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-xl">
+
+        <div class="modal-content">
+
+            <div class="modal-header bg-primary text-white">
+
+                <h4 class="modal-title">
+
+                    <i class="fa fa-user"></i>
+
+                    Employee Profile
+
+                </h4>
+
+                <button
+                    type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <!-- Photo -->
+
+                    <div class="col-md-3 text-center">
+
+                        <img
+                            id="profilePhoto"
+                            src="images/default-user.png"
+                            class="img-fluid rounded-circle shadow"
+                            style="width:180px;height:180px;object-fit:cover;">
+
+                        <h4
+                            class="mt-3"
+                            id="profileName">
+                        </h4>
+
+                        <span
+                            id="profileStatus">
+                        </span>
+
+                    </div>
+
+                    <!-- Details -->
+
+                    <div class="col-md-9">
+
+                        <table class="table table-bordered">
+
+                            <tbody>
+
+                                <tr>
+
+                                    <th width="220">
+
+                                        Employee Code
+
+                                    </th>
+
+                                    <td id="profileCode"></td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <th>Department</th>
+
+                                    <td id="profileDepartment"></td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <th>Designation</th>
+
+                                    <td id="profileDesignation"></td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <th>Mobile</th>
+
+                                    <td id="profileMobile"></td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <th>Email</th>
+
+                                    <td id="profileEmail"></td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <th>Joining Date</th>
+
+                                    <td id="profileJoiningDate"></td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <th>Salary</th>
+
+                                    <td id="profileSalary"></td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <th>Address</th>
+
+                                    <td id="profileAddress"></td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+
+                    Close
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ==========================================================
+     Edit Employee Modal
+=========================================================== -->
+
+<div class="modal fade"
+     id="editEmployeeModal"
+     tabindex="-1"
+     aria-labelledby="editEmployeeModalLabel"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+
+        <div class="modal-content shadow-lg border-0">
+
+            <!-- Modal Header -->
+            <div class="modal-header bg-warning text-dark">
+
+                <h4 class="modal-title" id="editEmployeeModalLabel">
+                    <i class="fa fa-user-pen me-2"></i>
+                    Edit Employee
+                </h4>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <!-- Form Starts -->
+            <form id="editEmployeeForm"
+                  enctype="multipart/form-data"
+                  novalidate>
+
+                <div class="modal-body">
+
+                    <input type="hidden"
+                           id="editEmployeeId">
+
+                    <!-- ===================================== -->
+                    <!-- Employee Photo -->
+                    <!-- ===================================== -->
+
+                    <div class="row mb-4">
+
+                        <div class="col-md-12 text-center">
+
+                            <img id="editPhotoPreview"
+                                 src="images/default-user.png"
+                                 class="rounded-circle shadow border"
+                                 width="140"
+                                 height="140"
+                                 style="object-fit:cover;">
+
+                            <br><br>
+
+                            <input type="file"
+                                   id="editPhoto"
+                                   class="form-control w-50 mx-auto"
+                                   accept="image/*">
+
+                        </div>
+
+                    </div>
+
+                    <!-- ===================================== -->
+                    <!-- Personal Information -->
+                    <!-- ===================================== -->
+
+                    <div class="card mb-4">
+
+                        <div class="card-header bg-primary text-white">
+
+                            <h5 class="mb-0">
+                                <i class="fa fa-id-card me-2"></i>
+                                Personal Information
+                            </h5>
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <div class="row">
+
+                                <!-- Employee Code -->
+                                <div class="col-md-4 mb-3">
+
+                                    <label class="form-label">
+                                        Employee Code
+                                    </label>
+
+                                    <input type="text"
+                                           id="editEmployeeCode"
+                                           class="form-control"
+                                           readonly>
+
+                                </div>
+
+                                <!-- First Name -->
+                                <div class="col-md-4 mb-3">
+
+                                    <label class="form-label">
+                                        First Name
+                                        <span class="text-danger">*</span>
+                                    </label>
+
+                                    <input type="text"
+                                           id="editFirstName"
+                                           class="form-control"
+                                           maxlength="100"
+                                           required>
+
+                                    <div class="invalid-feedback">
+                                        First name is required.
+                                    </div>
+
+                                </div>
+
+                                <!-- Last Name -->
+                                <div class="col-md-4 mb-3">
+
+                                    <label class="form-label">
+                                        Last Name
+                                        <span class="text-danger">*</span>
+                                    </label>
+
+                                    <input type="text"
+                                           id="editLastName"
+                                           class="form-control"
+                                           maxlength="100"
+                                           required>
+
+                                    <div class="invalid-feedback">
+                                        Last name is required.
+                                    </div>
+
+                                </div>
+
+                                <!-- Gender -->
+                                <div class="col-md-4 mb-3">
+
+                                    <label class="form-label">
+                                        Gender
+                                    </label>
+
+                                    <select id="editGender"
+                                            class="form-select">
+
+                                        <option value="">Select</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                        <option>Other</option>
+
+                                    </select>
+
+                                </div>
+
+                                <!-- Date of Birth -->
+                                <div class="col-md-4 mb-3">
+
+                                    <label class="form-label">
+                                        Date of Birth
+                                    </label>
+
+                                    <input type="date"
+                                           id="editDOB"
+                                           class="form-control">
+
+                                </div>
+
+                                <!-- Mobile -->
+                                <div class="col-md-4 mb-3">
+
+                                    <label class="form-label">
+                                        Mobile Number
+                                        <span class="text-danger">*</span>
+                                    </label>
+
+                                    <input type="tel"
+                                           id="editMobile"
+                                           class="form-control"
+                                           maxlength="10"
+                                           pattern="[0-9]{10}"
+                                           required>
+
+                                    <div class="invalid-feedback">
+                                        Enter a valid 10-digit mobile number.
+                                    </div>
+
+                                </div>
+
+                                <!-- Email -->
+                                <div class="col-md-6 mb-3">
+
+                                    <label class="form-label">
+                                        Email Address
+                                    </label>
+
+                                    <input type="email"
+                                           id="editEmail"
+                                           class="form-control"
+                                           maxlength="150">
+
+                                </div>
+
+                                <!-- Aadhaar -->
+                                <div class="col-md-6 mb-3">
+
+                                    <label class="form-label">
+                                        Aadhaar Number
+                                    </label>
+
+                                    <input type="text"
+                                           id="editAadhar"
+                                           class="form-control"
+                                           maxlength="12">
+
+                                </div>
+
+                                <!-- PAN -->
+                                <div class="col-md-6 mb-3">
+
+                                    <label class="form-label">
+                                        PAN Number
+                                    </label>
+
+                                    <input type="text"
+                                           id="editPAN"
+                                           class="form-control"
+                                           maxlength="10">
+
+                                </div>
+
+                                <!-- Marital Status -->
+                                <div class="col-md-6 mb-3">
+
+                                    <label class="form-label">
+                                        Marital Status
+                                    </label>
+
+                                    <select id="editMaritalStatus"
+                                            class="form-select">
+
+                                        <option value="">Select</option>
+                                        <option>Single</option>
+                                        <option>Married</option>
+                                        <option>Divorced</option>
+                                        <option>Widowed</option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Next Section:
+                         Employment Details (Part 3B.2B.2A.2) -->
+
+                </div>
+
+                <!-- Modal Footer -->
+
+         <div class="modal-footer">
+
+    <button
+        type="button"
+        class="btn btn-secondary"
+        data-bs-dismiss="modal">
+
+        <i class="fa fa-times"></i>
+
+        Cancel
+
+    </button>
+
+    <button
+        type="reset"
+        class="btn btn-warning">
+
+        <i class="fa fa-rotate-left"></i>
+
+        Reset
+
+    </button>
+
+    <button
+        type="submit"
+        class="btn btn-success"
+        id="btnUpdateEmployee">
+
+        <i class="fa fa-save"></i>
+
+        Update Employee
+
+    </button>
+
+</div>
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ==========================================================
+     Employment Details
+=========================================================== -->
+
+<div class="card mb-4">
+
+    <div class="card-header bg-success text-white">
+
+        <h5 class="mb-0">
+            <i class="fa fa-building me-2"></i>
+            Employment Details
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <!-- Department -->
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">
+                    Department
+                    <span class="text-danger">*</span>
+                </label>
+
+                <select
+                    id="editDepartment"
+                    class="form-select"
+                    required>
+
+                    <option value="">Select Department</option>
+
+                </select>
+
+                <div class="invalid-feedback">
+                    Department is required.
+                </div>
+
+            </div>
+
+            <!-- Designation -->
+
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">
+                    Designation
+                    <span class="text-danger">*</span>
+                </label>
+
+                <select
+                    id="editDesignation"
+                    class="form-select"
+                    required>
+
+                    <option value="">
+                        Select Designation
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- Joining Date -->
+
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">
+
+                    Joining Date
+
+                </label>
+
+                <input
+                    type="date"
+                    id="editJoiningDate"
+                    class="form-control">
+
+            </div>
+
+            <!-- Employment Type -->
+
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">
+
+                    Employment Type
+
+                </label>
+
+                <select
+                    id="editEmploymentType"
+                    class="form-select">
+
+                    <option value="">
+                        Select
+                    </option>
+
+                    <option value="Permanent">
+                        Permanent
+                    </option>
+
+                    <option value="Contract">
+                        Contract
+                    </option>
+
+                    <option value="Temporary">
+                        Temporary
+                    </option>
+
+                    <option value="Intern">
+                        Intern
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- Shift -->
+
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">
+
+                    Shift
+
+                </label>
+
+                <select
+                    id="editShift"
+                    class="form-select">
+
+                    <option value="">
+                        Select Shift
+                    </option>
+
+                    <option value="Morning">
+                        Morning
+                    </option>
+
+                    <option value="Evening">
+                        Evening
+                    </option>
+
+                    <option value="Night">
+                        Night
+                    </option>
+
+                    <option value="General">
+                        General
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- Reporting Manager -->
+
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">
+
+                    Reporting Manager
+
+                </label>
+
+                <select
+                    id="editReportingManager"
+                    class="form-select">
+
+                    <option value="">
+                        Select Manager
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- Employee Status -->
+
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">
+
+                    Employee Status
+
+                </label>
+
+                <select
+                    id="editStatus"
+                    class="form-select">
+
+                    <option value="Active">
+                        Active
+                    </option>
+
+                    <option value="Inactive">
+                        Inactive
+                    </option>
+
+                    <option value="Resigned">
+                        Resigned
+                    </option>
+
+                    <option value="Terminated">
+                        Terminated
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- Employee Role -->
+
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">
+
+                    Login Role
+
+                </label>
+
+                <select
+                    id="editRole"
+                    class="form-select">
+
+                    <option value="Employee">
+                        Employee
+                    </option>
+
+                    <option value="HR">
+                        HR
+                    </option>
+
+                    <option value="Manager">
+                        Manager
+                    </option>
+
+                    <option value="Admin">
+                        Admin
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ==========================================================
+     Bank Details
+=========================================================== -->
+
+<div class="card mb-4">
+
+    <div class="card-header bg-info text-white">
+
+        <h5 class="mb-0">
+            <i class="fa fa-building-columns me-2"></i>
+            Bank Details
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <!-- Bank Name -->
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">
+                    Bank Name
+                    <span class="text-danger">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="editBankName"
+                    class="form-control"
+                    maxlength="100"
+                    placeholder="Enter Bank Name"
+                    required>
+
+                <div class="invalid-feedback">
+                    Bank name is required.
+                </div>
+
+            </div>
+
+            <!-- Account Holder Name -->
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">
+                    Account Holder Name
+                    <span class="text-danger">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="editAccountHolder"
+                    class="form-control"
+                    maxlength="150"
+                    placeholder="Enter Account Holder Name"
+                    required>
+
+                <div class="invalid-feedback">
+                    Account holder name is required.
+                </div>
+
+            </div>
+
+            <!-- Account Number -->
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">
+                    Account Number
+                    <span class="text-danger">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="editAccountNumber"
+                    class="form-control"
+                    maxlength="25"
+                    placeholder="Enter Account Number"
+                    autocomplete="off"
+                    required>
+
+                <div class="invalid-feedback">
+                    Account number is required.
+                </div>
+
+            </div>
+
+            <!-- Confirm Account Number -->
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">
+                    Confirm Account Number
+                </label>
+
+                <input
+                    type="text"
+                    id="editConfirmAccountNumber"
+                    class="form-control"
+                    maxlength="25"
+                    placeholder="Re-enter Account Number"
+                    autocomplete="off">
+
+            </div>
+
+            <!-- IFSC Code -->
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">
+                    IFSC Code
+                    <span class="text-danger">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="editIFSC"
+                    class="form-control text-uppercase"
+                    maxlength="11"
+                    placeholder="SBIN0001234"
+                    style="text-transform:uppercase"
+                    required>
+
+                <div class="invalid-feedback">
+                    IFSC code is required.
+                </div>
+
+            </div>
+
+            <!-- Branch Name -->
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">
+                    Branch Name
+                </label>
+
+                <input
+                    type="text"
+                    id="editBranchName"
+                    class="form-control"
+                    maxlength="100"
+                    placeholder="Enter Branch Name">
+
+            </div>
+
+            <!-- Account Type -->
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">
+                    Account Type
+                </label>
+
+                <select
+                    id="editAccountType"
+                    class="form-select">
+
+                    <option value="">Select</option>
+                    <option value="Savings">Savings</option>
+                    <option value="Current">Current</option>
+                    <option value="Salary">Salary</option>
+
+                </select>
+
+            </div>
+
+            <!-- UPI ID -->
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">
+                    UPI ID
+                </label>
+
+                <input
+                    type="text"
+                    id="editUPI"
+                    class="form-control"
+                    maxlength="100"
+                    placeholder="example@upi">
+
+            </div>
+
+            <!-- Bank City -->
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">
+                    Bank City
+                </label>
+
+                <input
+                    type="text"
+                    id="editBankCity"
+                    class="form-control"
+                    maxlength="100"
+                    placeholder="Enter Bank City">
+
+            </div>
+
+            <!-- Bank State -->
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">
+                    Bank State
+                </label>
+
+                <input
+                    type="text"
+                    id="editBankState"
+                    class="form-control"
+                    maxlength="100"
+                    placeholder="Enter Bank State">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==========================================================
+     Salary Information
+=========================================================== -->
+
+<div class="card mb-4">
+
+    <div class="card-header bg-warning">
+
+        <h5 class="mb-0">
+
+            <i class="fa fa-indian-rupee-sign me-2"></i>
+
+            Salary Information
+
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <!-- Basic Salary -->
+
+            <div class="col-md-3 mb-3">
+
+                <label class="form-label">
+
+                    Basic Salary
+
+                </label>
+
+                <input
+                    type="number"
+                    id="editBasicSalary"
+                    class="form-control salary-field"
+                    value="0">
+
+            </div>
+
+            <!-- HRA -->
+
+            <div class="col-md-3 mb-3">
+
+                <label class="form-label">
+
+                    HRA
+
+                </label>
+
+                <input
+                    type="number"
+                    id="editHRA"
+                    class="form-control salary-field"
+                    value="0">
+
+            </div>
+
+            <!-- Medical -->
+
+            <div class="col-md-3 mb-3">
+
+                <label class="form-label">
+
+                    Medical Allowance
+
+                </label>
+
+                <input
+                    type="number"
+                    id="editMedicalAllowance"
+                    class="form-control salary-field"
+                    value="0">
+
+            </div>
+
+            <!-- Travel -->
+
+            <div class="col-md-3 mb-3">
+
+                <label class="form-label">
+
+                    Travel Allowance
+
+                </label>
+
+                <input
+                    type="number"
+                    id="editTravelAllowance"
+                    class="form-control salary-field"
+                    value="0">
+
+            </div>
+
+            <!-- Other -->
+
+            <div class="col-md-3 mb-3">
+
+                <label class="form-label">
+
+                    Other Allowance
+
+                </label>
+
+                <input
+                    type="number"
+                    id="editOtherAllowance"
+                    class="form-control salary-field"
+                    value="0">
+
+            </div>
+
+            <!-- Gross Salary -->
+
+            <div class="col-md-3 mb-3">
+
+                <label class="form-label">
+
+                    Gross Salary
+
+                </label>
+
+                <input
+                    type="number"
+                    id="editGrossSalary"
+                    class="form-control"
+                    readonly>
+
+            </div>
+
+            <!-- PF -->
+
+            <div class="col-md-2 mb-3">
+
+                <label class="form-label">
+
+                    PF
+
+                </label>
+
+                <input
+                    type="number"
+                    id="editPF"
+                    class="form-control"
+                    value="0">
+
+            </div>
+
+            <!-- ESIC -->
+
+            <div class="col-md-2 mb-3">
+
+                <label class="form-label">
+
+                    ESIC
+
+                </label>
+
+                <input
+                    type="number"
+                    id="editESIC"
+                    class="form-control"
+                    value="0">
+
+            </div>
+
+            <!-- Professional Tax -->
+
+            <div class="col-md-2 mb-3">
+
+                <label class="form-label">
+
+                    Professional Tax
+
+                </label>
+
+                <input
+                    type="number"
+                    id="editProfessionalTax"
+                    class="form-control"
+                    value="0">
+
+            </div>
+
+            <!-- Monthly Salary -->
+
+            <div class="col-md-3 mb-3">
+
+                <label class="form-label">
+
+                    Monthly Salary
+
+                </label>
+
+                <input
+                    type="number"
+                    id="editMonthlySalary"
+                    class="form-control"
+                    readonly>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ==========================================================
+     Address Information
+=========================================================== -->
+
+<div class="card mb-4">
+
+    <div class="card-header bg-secondary text-white">
+
+        <h5 class="mb-0">
+            <i class="fa fa-location-dot me-2"></i>
+            Address Information
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <!-- ================= Permanent Address ================= -->
+
+        <h5 class="text-primary mb-3">
+            <i class="fa fa-house me-2"></i>
+            Permanent Address
+        </h5>
+
+        <div class="row">
+
+            <div class="col-md-12 mb-3">
+
+                <label class="form-label">
+                    Permanent Address
+                </label>
+
+                <textarea
+                    id="editPermanentAddress"
+                    class="form-control"
+                    rows="3"
+                    maxlength="500"
+                    placeholder="Enter Permanent Address"></textarea>
+
+            </div>
+
+            <div class="col-md-3 mb-3">
+
+                <label class="form-label">
+                    Country
+                </label>
+
+                <input
+                    type="text"
+                    id="editPermanentCountry"
+                    class="form-control"
+                    value="India">
+
+            </div>
+
+            <div class="col-md-3 mb-3">
+
+                <label class="form-label">
+                    State
+                </label>
+
+                <input
+                    type="text"
+                    id="editPermanentState"
+                    class="form-control">
+
+            </div>
+
+            <div class="col-md-3 mb-3">
+
+                <label class="form-label">
+                    District
+                </label>
+
+                <input
+                    type="text"
+                    id="editPermanentDistrict"
+                    class="form-control">
+
+            </div>
+
+            <div class="col-md-3 mb-3">
+
+                <label class="form-label">
+                    City / Village
+                </label>
+
+                <input
+                    type="text"
+                    id="editPermanentCity"
+                    class="form-control">
+
+            </div>
+
+            <div class="col-md-3 mb-3">
+
+                <label class="form-label">
+                    PIN Code
+                </label>
+
+                <input
+                    type="text"
+                    id="editPermanentPincode"
+                    class="form-control"
+                    maxlength="6">
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <!-- ================= Same Address ================= -->
+
+        <div class="form-check form-switch mb-4">
+
+            <input
+                class="form-check-input"
+                type="checkbox"
+                id="sameAddress">
+
+            <label
+                class="form-check-label"
+                for="sameAddress">
+
+                Current Address is same as Permanent Address
+
+            </label>
+
+        </div>
+
+        <!-- ================= Current Address ================= -->
+
+        <h5 class="text-success mb-3">
+            <i class="fa fa-map-location-dot me-2"></i>
+            Current Address
+        </h5>
+
+        <div class="row">
+
+            <div class="col-md-12 mb-3">
+
+                <label class="form-label">
+                    Current Address
+                </label>
+
+                <textarea
+                    id="editCurrentAddress"
+                    class="form-control"
+                    rows="3"
+                    maxlength="500"></textarea>
+
+            </div>
+
+            <div class="col-md-3 mb-3">
+
+                <label class="form-label">
+                    Country
+                </label>
+
+                <input
+                    type="text"
+                    id="editCurrentCountry"
+                    class="form-control"
+                    value="India">
+
+            </div>
+
+            <div class="col-md-3 mb-3">
+
+                <label class="form-label">
+                    State
+                </label>
+
+                <input
+                    type="text"
+                    id="editCurrentState"
+                    class="form-control">
+
+            </div>
+
+            <div class="col-md-3 mb-3">
+
+                <label class="form-label">
+                    District
+                </label>
+
+                <input
+                    type="text"
+                    id="editCurrentDistrict"
+                    class="form-control">
+
+            </div>
+
+            <div class="col-md-3 mb-3">
+
+                <label class="form-label">
+                    City / Village
+                </label>
+
+                <input
+                    type="text"
+                    id="editCurrentCity"
+                    class="form-control">
+
+            </div>
+
+            <div class="col-md-3 mb-3">
+
+                <label class="form-label">
+                    PIN Code
+                </label>
+
+                <input
+                    type="text"
+                    id="editCurrentPincode"
+                    class="form-control"
+                    maxlength="6">
+
+            </div>
+
+        </div>
+
+        <!-- ================= Google Maps ================= -->
+
+        <hr>
+
+        <h5 class="text-danger mb-3">
+            <i class="fa fa-map me-2"></i>
+            Google Maps Location (Optional)
+        </h5>
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <label class="form-label">
+                    Google Maps URL
+                </label>
+
+                <input
+                    type="url"
+                    id="editGoogleLocation"
+                    class="form-control"
+                    placeholder="https://maps.google.com/...">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==========================================================
+     ADD EMPLOYEE MODAL
+=========================================================== -->
+
+<div class="modal fade"
+     id="addEmployeeModal"
+     tabindex="-1"
+     aria-labelledby="addEmployeeModalLabel"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+  <div class="modal-content shadow-lg border-0">
+        <div class="modal-content">
+
+            <!-- ================= Header ================= -->
+
+            <div class="modal-header bg-primary text-white">
+
+                <div>
+
+                    <h3 class="modal-title mb-1"
+                        id="addEmployeeModalLabel">
+
+                        <i class="fa fa-user-plus me-2"></i>
+
+                        Add New Employee
+
+                    </h3>
+
+                    <small>
+                        Employee Registration & Payroll Information
+                    </small>
+
+                </div>
+
+                <button type="button"
+                        class="btn-close btn-close-white"
+                        data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <!-- ================= Form ================= -->
+
+            <form id="addEmployeeForm"
+                  enctype="multipart/form-data"
+                  novalidate>
+
+                <div class="modal-body bg-light">
+
+                    <!-- ================================= -->
+                    <!-- Employee Photo -->
+                    <!-- ================================= -->
+
+                    <div class="card shadow-sm border-0 mb-4">
+
+                        <div class="card-body text-center">
+
+                            <img
+                                id="photoPreview"
+                                src="images/default-user.png"
+                                class="rounded-circle border shadow"
+                                width="150"
+                                height="150"
+                                style="object-fit:cover;">
+
+                            <br><br>
+
+                            <input
+                                type="file"
+                                id="employeePhoto"
+                                class="form-control w-25 mx-auto"
+                                accept="image/*">
+
+                            <small class="text-muted">
+                                Upload Employee Photo
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================================= -->
+                    <!-- Personal Information -->
+                    <!-- ================================= -->
+
+                    <div class="card shadow-sm mb-4">
+
+                        <div class="card-header bg-success text-white">
+
+                            <h5 class="mb-0">
+
+                                <i class="fa fa-id-card me-2"></i>
+
+                                Personal Information
+
+                            </h5>
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <div class="row">
+
+                                <!-- Employee Code -->
+
+                                <div class="col-lg-3 col-md-6 mb-3">
+
+                                    <label class="form-label">
+
+                                        Employee Code
+
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="employeeCode"
+                                        class="form-control"
+                                        readonly>
+
+                                </div>
+
+                                <!-- First Name -->
+
+                                <div class="col-lg-3 col-md-6 mb-3">
+
+                                    <label class="form-label">
+
+                                        First Name
+                                        <span class="text-danger">*</span>
+
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="firstName"
+                                        class="form-control"
+                                        maxlength="100"
+                                        required>
+
+                                    <div class="invalid-feedback">
+
+                                        First Name is required.
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Last Name -->
+
+                                <div class="col-lg-3 col-md-6 mb-3">
+
+                                    <label class="form-label">
+
+                                        Last Name
+                                        <span class="text-danger">*</span>
+
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="lastName"
+                                        class="form-control"
+                                        maxlength="100"
+                                        required>
+
+                                </div>
+
+                                <!-- Gender -->
+
+                                <div class="col-lg-3 col-md-6 mb-3">
+
+                                    <label class="form-label">
+
+                                        Gender
+
+                                    </label>
+
+                                    <select
+                                        id="gender"
+                                        class="form-select">
+
+                                        <option value="">
+                                            Select
+                                        </option>
+
+                                        <option value="Male">
+                                            Male
+                                        </option>
+
+                                        <option value="Female">
+                                            Female
+                                        </option>
+
+                                        <option value="Other">
+                                            Other
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                                <!-- DOB -->
+
+                                <div class="col-lg-3 col-md-6 mb-3">
+
+                                    <label class="form-label">
+
+                                        Date of Birth
+
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="dob"
+                                        class="form-control">
+
+                                </div>
+
+                                <!-- Mobile -->
+
+                                <div class="col-lg-3 col-md-6 mb-3">
+
+                                    <label class="form-label">
+
+                                        Mobile Number
+                                        <span class="text-danger">*</span>
+
+                                    </label>
+
+                                    <input
+                                        type="tel"
+                                        id="mobile"
+                                        class="form-control"
+                                        maxlength="10"
+                                        required>
+
+                                </div>
+
+                                <!-- Email -->
+
+                                <div class="col-lg-3 col-md-6 mb-3">
+
+                                    <label class="form-label">
+
+                                        Email
+
+                                    </label>
+
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        class="form-control">
+
+                                </div>
+
+                                <!-- Aadhaar -->
+
+                                <div class="col-lg-3 col-md-6 mb-3">
+
+                                    <label class="form-label">
+
+                                        Aadhaar Number
+
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="aadharNo"
+                                        class="form-control"
+                                        maxlength="12">
+
+                                </div>
+
+                                <!-- PAN -->
+
+                                <div class="col-lg-3 col-md-6 mb-3">
+
+                                    <label class="form-label">
+
+                                        PAN Number
+
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="panNo"
+                                        class="form-control"
+                                        maxlength="10">
+
+                                </div>
+
+                                <!-- Blood Group -->
+
+                                <div class="col-lg-3 col-md-6 mb-3">
+
+                                    <label class="form-label">
+
+                                        Blood Group
+
+                                    </label>
+
+                                    <select
+                                        id="bloodGroup"
+                                        class="form-select">
+
+                                        <option value="">
+                                            Select
+                                        </option>
+
+                                        <option>A+</option>
+                                        <option>A-</option>
+                                        <option>B+</option>
+                                        <option>B-</option>
+                                        <option>AB+</option>
+                                        <option>AB-</option>
+                                        <option>O+</option>
+                                        <option>O-</option>
+
+                                    </select>
+
+                                </div>
+
+                                <!-- Marital Status -->
+
+                                <div class="col-lg-3 col-md-6 mb-3">
+
+                                    <label class="form-label">
+
+                                        Marital Status
+
+                                    </label>
+
+                                    <select
+                                        id="maritalStatus"
+                                        class="form-select">
+
+                                        <option value="">
+                                            Select
+                                        </option>
+
+                                        <option>Single</option>
+                                        <option>Married</option>
+                                        <option>Divorced</option>
+                                        <option>Widowed</option>
+
+                                    </select>
+
+                                </div>
+
+                                <!-- Nationality -->
+
+                                <div class="col-lg-3 col-md-6 mb-3">
+
+                                    <label class="form-label">
+
+                                        Nationality
+
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="nationality"
+                                        class="form-control"
+                                        value="Indian">
+
+                                </div>
+								
+	</div></div></div>
+								<!-- ==========================================================
+     Login Details
+=========================================================== -->
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-header bg-dark text-white">
+
+        <h5 class="mb-0">
+
+            <i class="fa-solid fa-user-lock me-2"></i>
+
+            Login Account
+
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <div class="col-lg-4 mb-3">
+
+                <label class="form-label">
+
+                    Username
+
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    class="form-control">
+
+            </div>
+
+            <div class="col-lg-4 mb-3">
+
+                <label class="form-label">
+
+                    Password
+
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    class="form-control">
+
+            </div>
+
+            <div class="col-lg-4 mb-3">
+
+                <label class="form-label">
+
+                    Confirm Password
+
+                </label>
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    class="form-control">
+
+            </div>
+
+            <div class="col-lg-4 mb-3">
+
+                <label class="form-label">
+
+                    User Role
+
+                </label>
+
+                <select
+                    id="role"
+                    class="form-select">
+
+                    <option>Employee</option>
+                    <option>HR</option>
+                    <option>Manager</option>
+                    <option>Admin</option>
+
+                </select>
+
+            </div>
+
+            <div class="col-lg-4 mb-3">
+
+                <label class="form-label">
+
+                    Account Status
+
+                </label>
+
+                <select
+                    id="accountStatus"
+                    class="form-select">
+
+                    <option value="Active">
+
+                        Active
+
+                    </option>
+
+                    <option value="Inactive">
+
+                        Inactive
+
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+                    <!-- Employment Details Section -->
+					
+					<!-- ==========================================================
+     Employment Details
+=========================================================== -->
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-header bg-info text-white">
+
+        <h5 class="mb-0">
+
+            <i class="fa fa-briefcase me-2"></i>
+
+            Employment Details
+
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <!-- Department -->
+
+            <div class="col-lg-4 col-md-6 mb-3">
+
+                <label class="form-label">
+
+                    Department
+                    <span class="text-danger">*</span>
+
+                </label>
+
+                <select
+                    id="department"
+                    class="form-select"
+                    required>
+
+                    <option value="">
+                        Select Department
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- Designation -->
+
+            <div class="col-lg-4 col-md-6 mb-3">
+
+                <label class="form-label">
+
+                    Designation
+                    <span class="text-danger">*</span>
+
+                </label>
+
+                <select
+                    id="designation"
+                    class="form-select"
+                    required>
+
+                    <option value="">
+                        Select Designation
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- Joining Date -->
+
+            <div class="col-lg-4 col-md-6 mb-3">
+
+                <label class="form-label">
+
+                    Joining Date
+
+                </label>
+
+                <input
+                    type="date"
+                    id="joiningDate"
+                    class="form-control">
+
+            </div>
+
+            <!-- Employment Type -->
+
+            <div class="col-lg-4 col-md-6 mb-3">
+
+                <label class="form-label">
+
+                    Employment Type
+
+                </label>
+
+                <select
+                    id="employmentType"
+                    class="form-select">
+
+                    <option value="">
+                        Select
+                    </option>
+
+                    <option>Permanent</option>
+                    <option>Contract</option>
+                    <option>Temporary</option>
+                    <option>Intern</option>
+
+                </select>
+
+            </div>
+
+            <!-- Shift -->
+
+            <div class="col-lg-4 col-md-6 mb-3">
+
+                <label class="form-label">
+
+                    Shift
+
+                </label>
+
+                <select
+                    id="shift"
+                    class="form-select">
+
+                    <option value="">
+                        Select Shift
+                    </option>
+
+                    <option>General</option>
+                    <option>Morning</option>
+                    <option>Evening</option>
+                    <option>Night</option>
+
+                </select>
+
+            </div>
+
+            <!-- Reporting Manager -->
+
+            <div class="col-lg-4 col-md-6 mb-3">
+
+                <label class="form-label">
+
+                    Reporting Manager
+
+                </label>
+
+                <select
+                    id="reportingManager"
+                    class="form-select">
+
+                    <option value="">
+                        Select Manager
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- Employee Status -->
+
+            <div class="col-lg-4 col-md-6 mb-3">
+
+                <label class="form-label">
+
+                    Employee Status
+
+                </label>
+
+                <select
+                    id="employeeStatus"
+                    class="form-select">
+
+                    <option value="Active">
+                        Active
+                    </option>
+
+                    <option value="Inactive">
+                        Inactive
+                    </option>
+
+                    <option value="On Leave">
+                        On Leave
+                    </option>
+
+                    <option value="Resigned">
+                        Resigned
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- Employee Type -->
+
+            <div class="col-lg-4 col-md-6 mb-3">
+
+                <label class="form-label">
+
+                    Employee Category
+
+                </label>
+
+                <select
+                    id="employeeCategory"
+                    class="form-select">
+
+                    <option>Full Time</option>
+                    <option>Part Time</option>
+                    <option>Consultant</option>
+                    <option>Trainee</option>
+
+                </select>
+
+            </div>
+
+            <!-- Weekly Off -->
+
+            <div class="col-lg-4 col-md-6 mb-3">
+
+                <label class="form-label">
+
+                    Weekly Off
+
+                </label>
+
+                <select
+                    id="weeklyOff"
+                    class="form-select">
+
+                    <option>Sunday</option>
+                    <option>Saturday</option>
+                    <option>Friday</option>
+
+                </select>
+
+            </div>
+
+        </div>
+		</div></div>
+<!-- ==========================================================
+     Modal Footer
+=========================================================== -->
+<!-- ==========================================================
+     Salary Information
+=========================================================== -->
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-header bg-warning">
+
+        <h5 class="mb-0">
+
+            <i class="fa fa-indian-rupee-sign me-2"></i>
+
+            Salary Information
+
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <!-- Basic Salary -->
+
+            <div class="col-lg-3 col-md-6 mb-3">
+
+                <label class="form-label">
+
+                    Basic Salary
+
+                </label>
+
+                <input
+                    type="number"
+                    id="basicSalary"
+                    class="form-control salary-input"
+                    value="0"
+                    min="0">
+
+            </div>
+
+            <!-- HRA -->
+
+            <div class="col-lg-3 col-md-6 mb-3">
+
+                <label class="form-label">
+
+                    HRA
+
+                </label>
+
+                <input
+                    type="number"
+                    id="hra"
+                    class="form-control salary-input"
+                    value="0"
+                    min="0">
+
+            </div>
+
+            <!-- Medical -->
+
+            <div class="col-lg-3 col-md-6 mb-3">
+
+                <label class="form-label">
+
+                    Medical Allowance
+
+                </label>
+
+                <input
+                    type="number"
+                    id="medicalAllowance"
+                    class="form-control salary-input"
+                    value="0"
+                    min="0">
+
+            </div>
+
+            <!-- Travel -->
+
+            <div class="col-lg-3 col-md-6 mb-3">
+
+                <label class="form-label">
+
+                    Travel Allowance
+
+                </label>
+
+                <input
+                    type="number"
+                    id="travelAllowance"
+                    class="form-control salary-input"
+                    value="0"
+                    min="0">
+
+            </div>
+
+            <!-- Other -->
+
+            <div class="col-lg-3 col-md-6 mb-3">
+
+                <label class="form-label">
+
+                    Other Allowance
+
+                </label>
+
+                <input
+                    type="number"
+                    id="otherAllowance"
+                    class="form-control salary-input"
+                    value="0"
+                    min="0">
+
+            </div>
+
+            <!-- Bonus -->
+
+            <div class="col-lg-3 col-md-6 mb-3">
+
+                <label class="form-label">
+
+                    Bonus
+
+                </label>
+
+                <input
+                    type="number"
+                    id="bonus"
+                    class="form-control salary-input"
+                    value="0"
+                    min="0">
+
+            </div>
+
+            <!-- Overtime Rate -->
+
+            <div class="col-lg-3 col-md-6 mb-3">
+
+                <label class="form-label">
+
+                    Overtime Rate / Hour
+
+                </label>
+
+                <input
+                    type="number"
+                    id="overtimeRate"
+                    class="form-control"
+                    value="0">
+
+            </div>
+
+            <!-- Gross Salary -->
+
+            <div class="col-lg-3 col-md-6 mb-3">
+
+                <label class="form-label fw-bold">
+
+                    Gross Salary
+
+                </label>
+
+                <input
+                    type="number"
+                    id="grossSalary"
+                    class="form-control bg-light fw-bold"
+                    readonly>
+
+            </div>
+
+            <!-- PF -->
+
+            <div class="col-lg-2 col-md-4 mb-3">
+
+                <label class="form-label">
+
+                    PF
+
+                </label>
+
+                <input
+                    type="number"
+                    id="pf"
+                    class="form-control"
+                    value="0">
+
+            </div>
+
+            <!-- ESIC -->
+
+            <div class="col-lg-2 col-md-4 mb-3">
+
+                <label class="form-label">
+
+                    ESIC
+
+                </label>
+
+                <input
+                    type="number"
+                    id="esic"
+                    class="form-control"
+                    value="0">
+
+            </div>
+
+            <!-- Professional Tax -->
+
+            <div class="col-lg-2 col-md-4 mb-3">
+
+                <label class="form-label">
+
+                    Professional Tax
+
+                </label>
+
+                <input
+                    type="number"
+                    id="professionalTax"
+                    class="form-control"
+                    value="0">
+
+            </div>
+
+            <!-- Monthly Salary -->
+
+            <div class="col-lg-3 col-md-6 mb-3">
+
+                <label class="form-label fw-bold">
+
+                    Monthly Salary
+
+                </label>
+
+                <input
+                    type="number"
+                    id="monthlySalary"
+                    class="form-control bg-light fw-bold"
+                    readonly>
+
+            </div>
+      <!-- ==========================================================
+     Address Information
+=========================================================== -->
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-header bg-success text-white">
+
+        <h5 class="mb-0">
+
+            <i class="fa-solid fa-location-dot me-2"></i>
+
+            Address Information
+
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <div class="col-12 mb-3">
+
+                <label class="form-label">
+
+                    Permanent Address
+
+                </label>
+
+                <textarea
+                    id="permanentAddress"
+                    rows="3"
+                    class="form-control"></textarea>
+
+            </div>
+
+            <div class="col-md-12 mb-3">
+
+                <div class="form-check">
+
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="sameAddress">
+
+                    <label class="form-check-label">
+
+                        Current Address Same As Permanent Address
+
+                    </label>
+
+                </div>
+
+            </div>
+
+            <div class="col-12 mb-3">
+
+                <label class="form-label">
+
+                    Current Address
+
+                </label>
+
+                <textarea
+                    id="currentAddress"
+                    rows="3"
+                    class="form-control"></textarea>
+
+            </div>
+
+            <div class="col-lg-3 mb-3">
+
+                <label class="form-label">Country</label>
+
+                <input
+                    type="text"
+                    id="country"
+                    value="India"
+                    class="form-control">
+
+            </div>
+
+            <div class="col-lg-3 mb-3">
+
+                <label class="form-label">State</label>
+
+                <input
+                    type="text"
+                    id="state"
+                    class="form-control">
+
+            </div>
+
+            <div class="col-lg-3 mb-3">
+
+                <label class="form-label">District</label>
+
+                <input
+                    type="text"
+                    id="district"
+                    class="form-control">
+
+            </div>
+
+            <div class="col-lg-3 mb-3">
+
+                <label class="form-label">City</label>
+
+                <input
+                    type="text"
+                    id="city"
+                    class="form-control">
+
+            </div>
+
+            <div class="col-lg-3 mb-3">
+
+                <label class="form-label">PIN Code</label>
+
+                <input
+                    type="text"
+                    id="pinCode"
+                    class="form-control">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+        </div>
+
+    </div>
+
+</div>
+<div class="card shadow-sm mb-4">
+
+    <div class="card-header bg-primary text-white">
+
+        <h5 class="mb-0">
+            <i class="fa-solid fa-building-columns me-2"></i>
+            Bank Details
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <div class="col-lg-4 mb-3">
+                <label class="form-label">Bank Name</label>
+                <input type="text"
+                       id="bankName"
+                       class="form-control">
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <label class="form-label">Account Holder Name</label>
+                <input type="text"
+                       id="accountHolder"
+                       class="form-control">
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <label class="form-label">Account Number</label>
+                <input type="text"
+                       id="accountNumber"
+                       class="form-control">
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <label class="form-label">IFSC Code</label>
+                <input type="text"
+                       id="ifscCode"
+                       class="form-control text-uppercase">
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <label class="form-label">Branch Name</label>
+                <input type="text"
+                       id="branchName"
+                       class="form-control">
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <label class="form-label">UPI ID</label>
+                <input type="text"
+                       id="upiId"
+                       class="form-control">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="modal-footer bg-light border-top">
+
+    <button
+        type="button"
+        class="btn btn-secondary"
+        data-bs-dismiss="modal">
+
+        <i class="fa fa-times"></i>
+
+        Cancel
+
+    </button>
+
+    <button
+        type="reset"
+        class="btn btn-warning">
+
+        <i class="fa fa-rotate-left"></i>
+
+        Reset
+
+    </button>
+
+    <button
+       onclick="saveEmployee()"
+        class="btn btn-success"
+        id="btnSaveEmployeess">
+
+        <i class="fa fa-save"></i>
+
+        Save Employee
+
+    </button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+</div>
+</div>
+    </div>
+
+
+
+
+
+                    <!-- Continue in Part 2 -->
+<!-- ==========================================================
+     Bank Details
+=========================================================== -->
+
+
+                
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Employee JS -->
+
+<script src="employees1.js"></script>
+<script src="Validation.js"></script>
+</body>
+<html>

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>HRMS Admin Dashboard</title>
+
+    <!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          rel="stylesheet">
+
+    <!-- Chart JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link rel="stylesheet" href="css/responsive.css">
+
+
+</head>
+
+<body>
+<!-- <h2 id="totalEmployees">0</h2> -->
+<!-- <h2 id="presentToday">0</h2> -->
+<!-- <h2 id="absentToday">0</h2> -->
+<!-- <h2 id="leaveToday">0</h2> -->
+<!-- <h2 id="lateCheckin">0</h2> -->
+<!-- <h2 id="totalDepartments">0</h2> -->
+
+<!-- <h2 id="attendancePercent">0%</h2> -->
+
+<!-- <h2 id="monthlyPayroll">₹0</h2> -->
+<!-- <h3 id="salaryPaid">₹0</h3> -->
+<!-- <h3 id="pendingPayroll">₹0</h3> -->
+
+<!-- <h3 id="pendingLeave">0</h3> -->
+<!-- <h3 id="activeUsers">0</h3> -->
+<button id="menuToggle">
+    <i class="fa fa-bars"></i>
+</button>
+
+<a href="#" id="logoutBtn">
+    Logout
+</a>
+
+<h4 id="currentDate"></h4>
+<h5 id="currentTime"></h5>
+
+<span id="adminName">Administrator</span>
+<span id="adminFullName">Administrator</span>
+
+<div class="profile">
+    <img src="images/DhandaiLogo.png" alt="Profile">
+</div>
+
+<div id="loader" style="display:none;">
+    Loading...
+</div>
+
+<<div class="wrapper">  
+     <!-- <aside class="sidebar"> -->
+        <!-- <!-- Sidebar --> --> -->
+     <!-- </aside>  -->
+ <!-- </div>  -->
+
+        <!-- Dashboard -->
+
+
+    <!-- ========================= -->
+    <!-- Sidebar               
+    <!-- ========================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <img src="images/DhandaiLogo.png">
+
+            <h3>HRMS</h3>
+
+        </div>
+
+        <ul>
+
+            <li class="active">
+
+                <a href="#">
+
+                    <i class="fa fa-home"></i>
+
+                    Dashboard
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="employees1.html">
+
+                    <i class="fa fa-users"></i>
+
+                    Employees
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="attendance.html">
+
+                    <i class="fa fa-calendar-check"></i>
+
+                    Attendance
+
+                </a>
+
+            </li>
+  <li>
+
+                <a href="Employee.html">
+
+                    <i class="fa fa-calendar-check"></i>
+
+                    Employee Dashboard
+
+                </a>
+
+            </li>
+            <li>
+
+                <a href="leave.html">
+
+                    <i class="fa fa-plane"></i>
+
+                    Leave
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="payroll.html">
+
+                    <i class="fa fa-money-bill-wave"></i>
+
+                    Payroll
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="reports.html">
+
+                    <i class="fa fa-chart-bar"></i>
+
+                    Reports
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="department.html">
+
+                    <i class="fa fa-building"></i>
+
+                    Departments
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="holiday.html">
+
+                    <i class="fa fa-calendar-days"></i>
+
+                    Holidays
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="settings.html">
+
+                    <i class="fa fa-gear"></i>
+
+                    Settings
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="#" id="logoutBtn">
+
+                    <i class="fa fa-sign-out-alt"></i>
+
+                    Logout
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <!-- ========================= -->
+    <!-- Main Content              -->
+    <!-- ========================= -->
+
+    <main class="main-content">
+
+        <!-- ===================== -->
+        <!-- Navbar -->
+        <!-- ===================== -->
+
+        <header class="top-navbar">
+
+            <div class="left-section">
+
+                <button id="menuToggle">
+
+                    <i class="fa fa-bars"></i>
+
+                </button>
+
+                <h2>
+
+                    Dashboard
+
+                </h2>
+
+            </div>
+
+            <div class="search-box">
+
+                <input type="text"
+                       placeholder="Search Employee...">
+
+                <i class="fa fa-search"></i>
+
+            </div>
+
+            <div class="right-section">
+
+                <button>
+
+                    <i class="fa fa-bell"></i>
+
+                    <span class="badge bg-danger">5</span>
+
+                </button>
+
+                <button>
+
+                    <i class="fa fa-envelope"></i>
+
+                    <span class="badge bg-success">2</span>
+
+                </button>
+
+                <div class="profile">
+
+                    <img src="images/DhandaiLogo.png">
+
+                    <span id="adminName">
+
+                        Administrator
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- Dashboard Content Starts Here -->
+
+      <!-- ========================================= -->
+<!-- Welcome Banner -->
+<!-- ========================================= -->
+
+<div class="row mb-4">
+
+    <div class="col-lg-12">
+
+        <div class="welcome-card">
+
+            <div>
+
+                <h2>
+                    Welcome,
+                    <span id="adminFullName">
+                        Administrator
+                    </span>
+                </h2>
+
+                <p>
+                    Here's what's happening in your organization today.
+                </p>
+
+            </div>
+
+            <div>
+
+                <h4 id="currentDate"></h4>
+
+                <h5 id="currentTime"></h5>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- Dashboard Cards -->
+<!-- ========================================= -->
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#employeeProfileModal">
+  Open Employee Profile
+</button>
+<div class="row g-4">
+
+    <!-- Total Employees -->
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="dashboard-card card-blue">
+
+            <div class="card-icon">
+
+                <i class="fa fa-users"></i>
+
+            </div>
+
+            <div class="card-content">
+
+                <h5>Total Employees</h5>
+
+                <h2 id="totalEmployees">0</h2>
+
+                <small>Registered Employees</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Present -->
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="dashboard-card card-green">
+
+            <div class="card-icon">
+
+                <i class="fa fa-user-check"></i>
+
+            </div>
+
+            <div class="card-content">
+
+                <h5>Present Today</h5>
+
+                <h2 id="presentToday">0</h2>
+
+                <small>Checked In</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Absent -->
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="dashboard-card card-red">
+
+            <div class="card-icon">
+
+                <i class="fa fa-user-xmark"></i>
+
+            </div>
+
+            <div class="card-content">
+
+                <h5>Absent</h5>
+
+                <h2 id="absentToday">0</h2>
+
+                <small>Not Available</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Leave -->
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="dashboard-card card-orange">
+
+            <div class="card-icon">
+
+                <i class="fa fa-plane-departure"></i>
+
+            </div>
+
+            <div class="card-content">
+
+                <h5>On Leave</h5>
+
+                <h2 id="leaveToday">0</h2>
+
+                <small>Approved Leave</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================================= -->
+
+<div class="row g-4 mt-2">
+
+    <!-- Payroll -->
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="dashboard-card card-purple">
+
+            <div class="card-icon">
+
+                <i class="fa fa-money-bill-wave"></i>
+
+            </div>
+
+            <div class="card-content">
+
+                <h5>Monthly Payroll</h5>
+
+                <h2 id="monthlyPayroll">
+
+                    ₹0
+
+                </h2>
+
+                <small>Current Month</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Attendance -->
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="dashboard-card card-cyan">
+
+            <div class="card-icon">
+
+                <i class="fa fa-chart-line"></i>
+
+            </div>
+
+            <div class="card-content">
+
+                <h5>Attendance %</h5>
+
+                <h2 id="attendancePercent">
+
+                    0%
+
+                </h2>
+
+                <small>Overall</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Departments -->
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="dashboard-card card-dark">
+
+            <div class="card-icon">
+
+                <i class="fa fa-building"></i>
+
+            </div>
+
+            <div class="card-content">
+
+                <h5>Departments</h5>
+
+                <h2 id="totalDepartments">
+
+                    0
+
+                </h2>
+
+                <small>Active Departments</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Late Checkins -->
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="dashboard-card card-pink">
+
+            <div class="card-icon">
+
+                <i class="fa fa-clock"></i>
+
+            </div>
+
+            <div class="card-content">
+
+                <h5>Late Check-ins</h5>
+
+                <h2 id="lateCheckin">
+
+                    0
+
+                </h2>
+
+                <small>Today</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- Quick Summary -->
+<!-- ========================================= -->
+<div id="loader" style="display:none">
+    Loading...
+</div>
+<div class="row mt-4">
+
+    <div class="col-lg-12">
+
+        <div class="summary-card">
+
+            <div class="row">
+
+                <div class="col-md-3 text-center">
+
+                    <h5>Total Salary Paid</h5>
+
+                    <h3 id="salaryPaid">
+
+                        ₹0
+
+                    </h3>
+
+                </div>
+
+                <div class="col-md-3 text-center">
+
+                    <h5>Pending Payroll</h5>
+
+                    <h3 id="pendingPayroll">
+
+                        ₹0
+
+                    </h3>
+
+                </div>
+
+                <div class="col-md-3 text-center">
+
+                    <h5>Pending Leave</h5>
+
+                    <h3 id="pendingLeave">
+
+                        0
+
+                    </h3>
+
+                </div>
+
+                <div class="col-md-3 text-center">
+
+                    <h5>Active Users</h5>
+
+                    <h3 id="activeUsers">
+
+                        0
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+            <!-- Next Section:
+                 Dashboard Cards -->
+
+		<div class="card shadow mt-4">
+
+    <div class="card-header bg-primary text-white">
+
+        <h5>
+
+            Today's Attendance
+
+        </h5>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table
+            class="table table-hover align-middle">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th>#</th>
+
+                    <th>Photo</th>
+
+                    <th>Code</th>
+
+                    <th>Name</th>
+
+                    <th>Department</th>
+
+                    <th>Check In</th>
+
+                    <th>Check Out</th>
+
+                    <th>Status</th>
+
+                    <th>Working Hours</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="attendanceTableBody">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+		
+    </main>
+	
+	</div>
+	
+	
+	<script src="js/employees.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+/***************************************************
+Employee Table
+****************************************************/
+.modal-body {
+  max-height: 800px !important;   /* set desired height */
+ 
+  overflow-y: auto!important;    /* enable vertical scroll */
+}
+.employee-photo{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:2px solid #0d6efd;
+
+}
+
+.table td{
+
+    vertical-align:middle;
+
+}
+
+.table tbody tr:hover{
+
+    background:#eef5ff;
+
+}
+
+.card{
+
+    border-radius:12px;
+
+}
+
+.card-header{
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+.btn{
+
+    border-radius:8px;
+
+}
+
+.badge{
+
+    font-size:13px;
+
+    padding:8px 12px;
+
+}
+
+.action-btn{
+
+    margin-right:4px;
+
+}
+
+.search-box{
+
+    max-width:350px;
+
+}
+
+.employee-photo{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:2px solid #0d6efd;
+
+}
+
+.action-btn{
+
+    margin-right:4px;
+
+}
+
+.table td{
+
+    vertical-align:middle;
+
+}
+
+.table tbody tr:hover{
+
+    background:#eef6ff;
+
+}s

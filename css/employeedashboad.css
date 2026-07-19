@@ -1,0 +1,2568 @@
+/*=========================================================
+  HRMS EMPLOYEE DASHBOARD CSS
+  Section 1.1
+  Reset + Variables
+==========================================================*/
+
+
+/*=========================================================
+  GOOGLE FONT
+==========================================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/*=========================================================
+  CSS RESET
+==========================================================*/
+
+*,
+*::before,
+*::after{
+
+    margin:0 !important;
+
+    padding:0 !important;
+
+    box-sizing:border-box !important;
+
+}
+
+html{
+
+    scroll-behavior:smooth !important;
+
+    font-size:16px !important;
+
+    height:100% !important;
+
+}
+
+body{
+
+    font-family:'Poppins',sans-serif !important;
+
+    background:#f4f7fc !important;
+
+    color:#374151 !important;
+
+    line-height:1.6 !important;
+
+    overflow-x:hidden !important;
+
+    min-height:100vh !important;
+
+    -webkit-font-smoothing:antialiased !important;
+
+    -moz-osx-font-smoothing:grayscale !important;
+
+}
+
+
+/*=========================================================
+  ROOT VARIABLES
+==========================================================*/
+
+:root{
+
+    /* Primary */
+
+    --primary:#2563eb;
+
+    --primary-light:#3b82f6;
+
+    --primary-dark:#1d4ed8;
+
+    /* Secondary */
+
+    --secondary:#06b6d4;
+
+    /* Success */
+
+    --success:#22c55e;
+
+    /* Warning */
+
+    --warning:#f59e0b;
+
+    /* Danger */
+
+    --danger:#ef4444;
+
+    /* Info */
+
+    --info:#0ea5e9;
+
+    /* Purple */
+
+    --purple:#7c3aed;
+
+    /* White */
+
+    --white:#ffffff;
+
+    /* Blacks */
+
+    --black:#111827;
+
+    /* Gray Colors */
+
+    --gray-50:#f9fafb;
+
+    --gray-100:#f3f4f6;
+
+    --gray-200:#e5e7eb;
+
+    --gray-300:#d1d5db;
+
+    --gray-400:#9ca3af;
+
+    --gray-500:#6b7280;
+
+    --gray-600:#4b5563;
+
+    --gray-700:#374151;
+
+    --gray-800:#1f2937;
+
+    --gray-900:#111827;
+
+    /* Sidebar */
+
+    --sidebar-width:280px;
+
+    --sidebar-mini-width:80px;
+
+    /* Navbar */
+
+    --navbar-height:70px;
+
+    /* Radius */
+
+    --radius-sm:6px;
+
+    --radius:12px;
+
+    --radius-lg:18px;
+
+    --radius-xl:25px;
+
+    /* Shadow */
+
+    --shadow-sm:0 2px 8px rgba(0,0,0,.05);
+
+    --shadow:0 8px 24px rgba(0,0,0,.08);
+
+    --shadow-lg:0 15px 40px rgba(0,0,0,.12);
+
+    /* Transition */
+
+    --transition:.3s ease-in-out;
+
+    /* Gradients */
+
+    --gradient-primary:
+    linear-gradient(135deg,#2563eb,#3b82f6);
+
+    --gradient-success:
+    linear-gradient(135deg,#22c55e,#16a34a);
+
+    --gradient-danger:
+    linear-gradient(135deg,#ef4444,#dc2626);
+
+    --gradient-warning:
+    linear-gradient(135deg,#f59e0b,#fb923c);
+
+    --gradient-purple:
+    linear-gradient(135deg,#7c3aed,#8b5cf6);
+
+}
+
+
+/*=========================================================
+  TYPOGRAPHY
+==========================================================*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+
+    color:var(--gray-800) !important;
+
+    font-weight:600 !important;
+
+    margin-bottom:.75rem !important;
+
+}
+
+h1{
+
+    font-size:2rem !important;
+
+}
+
+h2{
+
+    font-size:1.75rem !important;
+
+}
+
+h3{
+
+    font-size:1.5rem !important;
+
+}
+
+h4{
+
+    font-size:1.3rem !important;
+
+}
+
+h5{
+
+    font-size:1.1rem !important;
+
+}
+
+h6{
+
+    font-size:1rem !important;
+
+}
+
+p{
+
+    color:var(--gray-600) !important;
+
+    margin-bottom:1rem !important;
+
+}
+
+small{
+
+    color:var(--gray-500) !important;
+
+}
+
+
+/*=========================================================
+  LINKS
+==========================================================*/
+
+a{
+
+    text-decoration:none !important;
+
+    color:var(--primary) !important;
+
+    transition:var(--transition) !important;
+
+}
+
+a:hover{
+
+    color:var(--primary-dark) !important;
+
+}
+
+
+/*=========================================================
+  IMAGES
+==========================================================*/
+
+img{
+
+    max-width:100% !important;
+
+    display:block !important;
+
+}
+
+
+/*=========================================================
+  BUTTONS
+==========================================================*/
+
+button{
+
+    font-family:'Poppins',sans-serif !important;
+
+    outline:none !important;
+
+    border:none !important;
+
+    transition:var(--transition) !important;
+
+}
+
+button:focus{
+
+    box-shadow:none !important;
+
+}
+
+
+/*=========================================================
+  FORM CONTROLS
+==========================================================*/
+
+input,
+select,
+textarea{
+
+    font-family:'Poppins',sans-serif !important;
+
+}
+
+.form-control,
+.form-select{
+
+    border-radius:10px !important;
+
+    border:1px solid var(--gray-300) !important;
+
+    transition:var(--transition) !important;
+
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    border-color:var(--primary) !important;
+
+    box-shadow:0 0 0 .2rem rgba(37,99,235,.15) !important;
+
+}
+
+
+/*=========================================================
+  TABLE
+==========================================================*/
+
+table{
+
+    width:100% !important;
+
+    border-collapse:collapse !important;
+
+}
+
+
+/*=========================================================
+  LISTS
+==========================================================*/
+
+ul,
+ol{
+
+    list-style:none !important;
+
+}
+
+
+/*=========================================================
+  UTILITIES
+==========================================================*/
+
+.text-primary{
+
+    color:var(--primary) !important;
+
+}
+
+.text-success{
+
+    color:var(--success) !important;
+
+}
+
+.text-danger{
+
+    color:var(--danger) !important;
+
+}
+
+.text-warning{
+
+    color:var(--warning) !important;
+
+}
+
+.text-info{
+
+    color:var(--info) !important;
+
+}
+
+.bg-primary{
+
+    background:var(--gradient-primary) !important;
+
+}
+
+.bg-success{
+
+    background:var(--gradient-success) !important;
+
+}
+
+.bg-danger{
+
+    background:var(--gradient-danger) !important;
+
+}
+
+.bg-warning{
+
+    background:var(--gradient-warning) !important;
+
+}
+
+.shadow-sm{
+
+    box-shadow:var(--shadow-sm) !important;
+
+}
+
+.shadow{
+
+    box-shadow:var(--shadow) !important;
+
+}
+
+.shadow-lg{
+
+    box-shadow:var(--shadow-lg) !important;
+
+}
+
+.rounded{
+
+    border-radius:var(--radius) !important;
+
+}
+
+.rounded-lg{
+
+    border-radius:var(--radius-lg) !important;
+
+}
+
+.rounded-xl{
+
+    border-radius:var(--radius-xl) !important;
+
+}
+
+.cursor-pointer{
+
+    cursor:pointer !important;
+
+}
+
+.w-100{
+
+    width:100% !important;
+
+}
+
+.h-100{
+
+    height:100% !important;
+
+}
+
+.d-none{
+
+    display:none !important;
+
+}
+
+.d-flex{
+
+    display:flex !important;
+
+}
+
+.align-center{
+
+    align-items:center !important;
+
+}
+
+.justify-between{
+
+    justify-content:space-between !important;
+
+}
+
+.transition{
+
+    transition:var(--transition) !important;
+
+}
+
+
+/*=========================================================
+  SELECTION
+==========================================================*/
+
+::selection{
+
+    background:var(--primary) !important;
+
+    color:#ffffff !important;
+
+}
+
+
+/*=========================================================
+  PLACEHOLDER
+==========================================================*/
+
+::placeholder{
+
+    color:var(--gray-400) !important;
+
+    opacity:1 !important;
+
+}
+
+/*=========================================================
+  SECTION 2
+  Employee Profile
+  Welcome Banner
+  Statistics Cards
+==========================================================*/
+
+
+/*=========================================================
+  EMPLOYEE PROFILE
+==========================================================*/
+
+.employee-profile{
+
+    margin:20px 15px !important;
+
+}
+
+.profile-card{
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    background:rgba(255,255,255,.95) !important;
+
+    border-radius:20px !important;
+
+    padding:25px 20px !important;
+
+    text-align:center !important;
+
+    border:1px solid rgba(255,255,255,.3) !important;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08) !important;
+
+    transition:.35s ease !important;
+
+}
+
+.profile-card:hover{
+
+    transform:translateY(-6px) !important;
+
+    box-shadow:0 20px 45px rgba(37,99,235,.18) !important;
+
+}
+
+.profile-card::before{
+
+    content:'' !important;
+
+    position:absolute !important;
+
+    width:180px !important;
+
+    height:180px !important;
+
+    border-radius:50% !important;
+
+    background:rgba(37,99,235,.08) !important;
+
+    top:-90px !important;
+
+    right:-70px !important;
+
+}
+
+.profile-image{
+
+    width:110px !important;
+
+    height:110px !important;
+
+    margin:0 auto 18px !important;
+
+    position:relative !important;
+
+}
+
+.profile-image img{
+
+    width:110px !important;
+
+    height:110px !important;
+
+    object-fit:cover !important;
+
+    border-radius:50% !important;
+
+    border:5px solid #fff !important;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15) !important;
+
+}
+
+.online-status{
+
+    position:absolute !important;
+
+    bottom:8px !important;
+
+    right:8px !important;
+
+    width:18px !important;
+
+    height:18px !important;
+
+    background:#22c55e !important;
+
+    border:3px solid #fff !important;
+
+    border-radius:50% !important;
+
+    animation:pulse 2s infinite !important;
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        box-shadow:0 0 0 0 rgba(34,197,94,.6);
+
+    }
+
+    70%{
+
+        box-shadow:0 0 0 12px rgba(34,197,94,0);
+
+    }
+
+    100%{
+
+        box-shadow:0 0 0 0 rgba(34,197,94,0);
+
+    }
+
+}
+
+.profile-name{
+
+    font-size:21px !important;
+
+    font-weight:700 !important;
+
+    color:#1f2937 !important;
+
+}
+
+.profile-designation{
+
+    font-size:15px !important;
+
+    color:#2563eb !important;
+
+    font-weight:600 !important;
+
+    margin-top:5px !important;
+
+}
+
+.employee-id{
+
+    display:inline-block !important;
+
+    margin-top:15px !important;
+
+    padding:7px 18px !important;
+
+    border-radius:30px !important;
+
+    background:#eef4ff !important;
+
+    color:#2563eb !important;
+
+    font-size:13px !important;
+
+    font-weight:600 !important;
+
+}
+
+.profile-info{
+
+    margin-top:20px !important;
+
+}
+
+.profile-info-item{
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    margin-bottom:12px !important;
+
+    background:#f8fafc !important;
+
+    border-radius:12px !important;
+
+    padding:12px !important;
+
+    transition:.3s !important;
+
+}
+
+.profile-info-item:hover{
+
+    background:#eef4ff !important;
+
+}
+
+.profile-info-item i{
+
+    width:42px !important;
+
+    height:42px !important;
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    justify-content:center !important;
+
+    border-radius:10px !important;
+
+    background:var(--gradient-primary) !important;
+
+    color:#fff !important;
+
+    margin-right:12px !important;
+
+}
+
+.profile-btn{
+
+    width:100% !important;
+
+    margin-top:20px !important;
+
+    padding:12px !important;
+
+    border-radius:12px !important;
+
+    background:var(--gradient-primary) !important;
+
+    color:#fff !important;
+
+    font-weight:600 !important;
+
+    transition:.3s !important;
+
+}
+
+.profile-btn:hover{
+
+    transform:translateY(-2px) !important;
+
+}
+
+
+/*=========================================================
+  WELCOME BANNER
+==========================================================*/
+
+.welcome-banner{
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    border-radius:20px !important;
+
+    padding:35px !important;
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8,#0ea5e9) !important;
+
+    color:#fff !important;
+
+    margin-bottom:25px !important;
+
+    box-shadow:0 15px 40px rgba(37,99,235,.25) !important;
+
+}
+
+.welcome-banner::before{
+
+    content:'' !important;
+
+    position:absolute !important;
+
+    width:260px !important;
+
+    height:260px !important;
+
+    border-radius:50% !important;
+
+    background:rgba(255,255,255,.08) !important;
+
+    right:-80px !important;
+
+    top:-120px !important;
+
+}
+
+.welcome-banner h2{
+
+    color:#fff !important;
+
+    font-weight:700 !important;
+
+    margin-bottom:10px !important;
+
+}
+
+.welcome-banner p{
+
+    color:rgba(255,255,255,.9) !important;
+
+    margin-bottom:0 !important;
+
+}
+
+.welcome-banner .btn{
+
+    margin-top:20px !important;
+
+    border-radius:10px !important;
+
+    padding:10px 24px !important;
+
+    background:#fff !important;
+
+    color:#2563eb !important;
+
+    font-weight:600 !important;
+
+}
+
+.welcome-banner .btn:hover{
+
+    background:#f8fafc !important;
+
+}
+
+
+/*=========================================================
+  STATISTICS CARDS
+==========================================================*/
+
+.stats-card{
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    background:#fff !important;
+
+    border-radius:18px !important;
+
+    padding:25px !important;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.06) !important;
+
+    transition:.35s ease !important;
+
+    margin-bottom:25px !important;
+
+}
+
+.stats-card:hover{
+
+    transform:translateY(-8px) !important;
+
+    box-shadow:0 18px 40px rgba(37,99,235,.15) !important;
+
+}
+
+.stats-icon{
+
+    width:65px !important;
+
+    height:65px !important;
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    justify-content:center !important;
+
+    border-radius:18px !important;
+
+    color:#fff !important;
+
+    font-size:28px !important;
+
+    margin-bottom:20px !important;
+
+}
+
+.stats-icon.primary{
+
+    background:var(--gradient-primary) !important;
+
+}
+
+.stats-icon.success{
+
+    background:var(--gradient-success) !important;
+
+}
+
+.stats-icon.warning{
+
+    background:var(--gradient-warning) !important;
+
+}
+
+.stats-icon.danger{
+
+    background:var(--gradient-danger) !important;
+
+}
+
+.stats-title{
+
+    color:#6b7280 !important;
+
+    font-size:15px !important;
+
+    margin-bottom:6px !important;
+
+}
+
+.stats-value{
+
+    font-size:30px !important;
+
+    font-weight:700 !important;
+
+    color:#1f2937 !important;
+
+}
+
+.stats-change{
+
+    margin-top:10px !important;
+
+    font-size:14px !important;
+
+    font-weight:600 !important;
+
+}
+
+.stats-change.positive{
+
+    color:#22c55e !important;
+
+}
+
+.stats-change.negative{
+
+    color:#ef4444 !important;
+
+}
+
+
+/*=========================================================
+  RESPONSIVE
+==========================================================*/
+
+@media(max-width:991px){
+
+    .welcome-banner{
+
+        padding:25px !important;
+
+    }
+
+    .stats-card{
+
+        margin-bottom:20px !important;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .profile-image{
+
+        width:90px !important;
+
+        height:90px !important;
+
+    }
+
+    .profile-image img{
+
+        width:90px !important;
+
+        height:90px !important;
+
+    }
+
+    .welcome-banner{
+
+        text-align:center !important;
+
+        padding:20px !important;
+
+    }
+
+    .stats-value{
+
+        font-size:24px !important;
+
+    }
+
+}
+
+/*=========================================================
+    SECTION 3.1
+    ATTENDANCE CHART
+    CHART CARD
+    CHART LEGEND
+    RESPONSIVE CHART
+==========================================================*/
+
+
+/*=========================================================
+    CHART SECTION
+==========================================================*/
+
+.chart-section{
+
+    margin-bottom:30px !important;
+
+}
+
+.chart-wrapper{
+
+    width:100% !important;
+
+}
+
+
+/*=========================================================
+    CHART CARD
+==========================================================*/
+
+.chart-card{
+
+    position:relative !important;
+
+    background:#ffffff !important;
+
+    border-radius:20px !important;
+
+    overflow:hidden !important;
+
+    border:none !important;
+
+    box-shadow:0 10px 30px rgba(15,23,42,.08) !important;
+
+    transition:.35s ease !important;
+
+}
+
+.chart-card:hover{
+
+    transform:translateY(-5px) !important;
+
+    box-shadow:0 18px 40px rgba(37,99,235,.15) !important;
+
+}
+
+
+/*=========================================================
+    CHART HEADER
+==========================================================*/
+
+.chart-header{
+
+    display:flex !important;
+
+    justify-content:space-between !important;
+
+    align-items:center !important;
+
+    padding:20px 25px !important;
+
+    border-bottom:1px solid #eef2f7 !important;
+
+    background:#ffffff !important;
+
+}
+
+.chart-title{
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    gap:12px !important;
+
+}
+
+.chart-title-icon{
+
+    width:45px !important;
+
+    height:45px !important;
+
+    border-radius:14px !important;
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    justify-content:center !important;
+
+    color:#ffffff !important;
+
+    background:linear-gradient(135deg,#2563eb,#3b82f6) !important;
+
+    font-size:20px !important;
+
+}
+
+.chart-title h5{
+
+    margin:0 !important;
+
+    font-size:18px !important;
+
+    font-weight:700 !important;
+
+    color:#1f2937 !important;
+
+}
+
+.chart-title span{
+
+    display:block !important;
+
+    color:#64748b !important;
+
+    font-size:13px !important;
+
+    margin-top:3px !important;
+
+}
+
+
+/*=========================================================
+    CHART ACTIONS
+==========================================================*/
+
+.chart-actions{
+
+    display:flex !important;
+
+    gap:10px !important;
+
+}
+
+.chart-actions .btn{
+
+    border-radius:10px !important;
+
+    font-size:13px !important;
+
+    padding:8px 16px !important;
+
+}
+
+
+/*=========================================================
+    CHART BODY
+==========================================================*/
+
+.chart-body{
+
+    padding:25px !important;
+
+}
+
+.chart-container{
+
+    position:relative !important;
+
+    width:100% !important;
+
+    height:380px !important;
+
+}
+
+.chart-container canvas{
+
+    width:100% !important;
+
+    height:100% !important;
+
+}
+
+
+/*=========================================================
+    CHART FOOTER
+==========================================================*/
+
+.chart-footer{
+
+    display:flex !important;
+
+    justify-content:space-between !important;
+
+    align-items:center !important;
+
+    padding:15px 25px !important;
+
+    border-top:1px solid #eef2f7 !important;
+
+    background:#fafbfc !important;
+
+}
+
+
+/*=========================================================
+    CHART LEGEND
+==========================================================*/
+
+.chart-legend{
+
+    display:flex !important;
+
+    flex-wrap:wrap !important;
+
+    align-items:center !important;
+
+    gap:18px !important;
+
+}
+
+.legend-item{
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    gap:8px !important;
+
+    font-size:14px !important;
+
+    font-weight:500 !important;
+
+    color:#475569 !important;
+
+}
+
+.legend-color{
+
+    width:14px !important;
+
+    height:14px !important;
+
+    border-radius:50% !important;
+
+}
+
+.legend-present{
+
+    background:#22c55e !important;
+
+}
+
+.legend-absent{
+
+    background:#ef4444 !important;
+
+}
+
+.legend-leave{
+
+    background:#f59e0b !important;
+
+}
+
+.legend-halfday{
+
+    background:#0ea5e9 !important;
+
+}
+
+.legend-holiday{
+
+    background:#8b5cf6 !important;
+
+}
+
+
+/*=========================================================
+    CHART SUMMARY
+==========================================================*/
+
+.chart-summary{
+
+    display:flex !important;
+
+    gap:25px !important;
+
+}
+
+.summary-box{
+
+    text-align:center !important;
+
+}
+
+.summary-value{
+
+    display:block !important;
+
+    font-size:24px !important;
+
+    font-weight:700 !important;
+
+    color:#2563eb !important;
+
+}
+
+.summary-title{
+
+    font-size:13px !important;
+
+    color:#64748b !important;
+
+}
+
+
+/*=========================================================
+    LOADING
+==========================================================*/
+
+.chart-loading{
+
+    width:100% !important;
+
+    height:380px !important;
+
+    display:flex !important;
+
+    justify-content:center !important;
+
+    align-items:center !important;
+
+}
+
+.chart-loading .spinner-border{
+
+    width:3rem !important;
+
+    height:3rem !important;
+
+}
+
+
+/*=========================================================
+    EMPTY CHART
+==========================================================*/
+
+.chart-empty{
+
+    height:380px !important;
+
+    display:flex !important;
+
+    flex-direction:column !important;
+
+    justify-content:center !important;
+
+    align-items:center !important;
+
+    color:#94a3b8 !important;
+
+}
+
+.chart-empty i{
+
+    font-size:55px !important;
+
+    margin-bottom:15px !important;
+
+}
+
+.chart-empty h5{
+
+    color:#475569 !important;
+
+    margin-bottom:8px !important;
+
+}
+
+.chart-empty p{
+
+    margin:0 !important;
+
+}
+
+
+/*=========================================================
+    RESPONSIVE
+==========================================================*/
+
+@media(max-width:992px){
+
+    .chart-header{
+
+        flex-direction:column !important;
+
+        align-items:flex-start !important;
+
+        gap:15px !important;
+
+    }
+
+    .chart-footer{
+
+        flex-direction:column !important;
+
+        align-items:flex-start !important;
+
+        gap:20px !important;
+
+    }
+
+    .chart-container{
+
+        height:320px !important;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .chart-body{
+
+        padding:18px !important;
+
+    }
+
+    .chart-container{
+
+        height:280px !important;
+
+    }
+
+    .chart-title h5{
+
+        font-size:16px !important;
+
+    }
+
+    .summary-value{
+
+        font-size:20px !important;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .chart-header{
+
+        padding:18px !important;
+
+    }
+
+    .chart-footer{
+
+        padding:18px !important;
+
+    }
+
+    .chart-container{
+
+        height:240px !important;
+
+    }
+
+    .chart-legend{
+
+        gap:12px !important;
+
+    }
+
+    .legend-item{
+
+        font-size:12px !important;
+
+    }
+
+    .summary-box{
+
+        flex:1 !important;
+
+    }
+
+}
+
+/*=========================================================
+    SECTION 3.2
+    ATTENDANCE CALENDAR
+    CALENDAR GRID
+    MONTH NAVIGATION
+    ATTENDANCE COLORS
+==========================================================*/
+
+
+/*=========================================================
+    CALENDAR CARD
+==========================================================*/
+
+.calendar-card{
+
+    background:#ffffff !important;
+
+    border-radius:20px !important;
+
+    box-shadow:0 10px 30px rgba(15,23,42,.08) !important;
+
+    overflow:hidden !important;
+
+    border:none !important;
+
+    transition:.35s ease !important;
+
+    margin-bottom:30px !important;
+
+}
+
+.calendar-card:hover{
+
+    transform:translateY(-5px) !important;
+
+    box-shadow:0 18px 40px rgba(37,99,235,.15) !important;
+
+}
+
+
+/*=========================================================
+    CALENDAR HEADER
+==========================================================*/
+
+.calendar-header{
+
+    display:flex !important;
+
+    justify-content:space-between !important;
+
+    align-items:center !important;
+
+    padding:20px 25px !important;
+
+    border-bottom:1px solid #edf2f7 !important;
+
+    background:#ffffff !important;
+
+}
+
+.calendar-title{
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    gap:12px !important;
+
+}
+
+.calendar-title i{
+
+    width:45px !important;
+
+    height:45px !important;
+
+    border-radius:14px !important;
+
+    background:linear-gradient(135deg,#2563eb,#3b82f6) !important;
+
+    color:#ffffff !important;
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    justify-content:center !important;
+
+    font-size:20px !important;
+
+}
+
+.calendar-title h5{
+
+    margin:0 !important;
+
+    font-size:18px !important;
+
+    font-weight:700 !important;
+
+    color:#1f2937 !important;
+
+}
+
+.calendar-title span{
+
+    display:block !important;
+
+    font-size:13px !important;
+
+    color:#64748b !important;
+
+    margin-top:3px !important;
+
+}
+
+
+/*=========================================================
+    MONTH NAVIGATION
+==========================================================*/
+
+.calendar-navigation{
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    gap:12px !important;
+
+}
+
+.calendar-btn{
+
+    width:40px !important;
+
+    height:40px !important;
+
+    border:none !important;
+
+    border-radius:12px !important;
+
+    background:#f1f5f9 !important;
+
+    color:#2563eb !important;
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    justify-content:center !important;
+
+    cursor:pointer !important;
+
+    transition:.3s !important;
+
+}
+
+.calendar-btn:hover{
+
+    background:#2563eb !important;
+
+    color:#ffffff !important;
+
+}
+
+.current-month{
+
+    min-width:170px !important;
+
+    text-align:center !important;
+
+    font-size:16px !important;
+
+    font-weight:700 !important;
+
+    color:#1f2937 !important;
+
+}
+
+
+/*=========================================================
+    CALENDAR BODY
+==========================================================*/
+
+.calendar-body{
+
+    padding:25px !important;
+
+}
+
+
+/*=========================================================
+    WEEK HEADER
+==========================================================*/
+
+.calendar-weekdays{
+
+    display:grid !important;
+
+    grid-template-columns:repeat(7,1fr) !important;
+
+    gap:10px !important;
+
+    margin-bottom:15px !important;
+
+}
+
+.calendar-weekdays div{
+
+    background:#2563eb !important;
+
+    color:#ffffff !important;
+
+    text-align:center !important;
+
+    padding:12px 8px !important;
+
+    border-radius:10px !important;
+
+    font-weight:600 !important;
+
+    font-size:14px !important;
+
+}
+
+
+/*=========================================================
+    CALENDAR GRID
+==========================================================*/
+
+.calendar-grid{
+
+    display:grid !important;
+
+    grid-template-columns:repeat(7,1fr) !important;
+
+    gap:10px !important;
+
+}
+
+.calendar-day{
+
+    position:relative !important;
+
+    min-height:95px !important;
+
+    border-radius:14px !important;
+
+    background:#f8fafc !important;
+
+    display:flex !important;
+
+    align-items:flex-start !important;
+
+    justify-content:flex-end !important;
+
+    padding:10px !important;
+
+    cursor:pointer !important;
+
+    transition:.3s ease !important;
+
+    border:1px solid transparent !important;
+
+}
+
+.calendar-day:hover{
+
+    transform:translateY(-3px) !important;
+
+    background:#eef4ff !important;
+
+    border-color:#2563eb !important;
+
+}
+
+.calendar-day span{
+
+    font-size:15px !important;
+
+    font-weight:600 !important;
+
+    color:#334155 !important;
+
+}
+
+
+/*=========================================================
+    TODAY
+==========================================================*/
+
+.calendar-day.today{
+
+    border:2px solid #2563eb !important;
+
+    background:#dbeafe !important;
+
+}
+
+.calendar-day.today span{
+
+    color:#1d4ed8 !important;
+
+    font-weight:700 !important;
+
+}
+
+
+/*=========================================================
+    DISABLED DAYS
+==========================================================*/
+
+.calendar-day.disabled{
+
+    background:#f3f4f6 !important;
+
+    color:#cbd5e1 !important;
+
+    cursor:default !important;
+
+}
+
+.calendar-day.disabled span{
+
+    color:#cbd5e1 !important;
+
+}
+
+
+/*=========================================================
+    ATTENDANCE COLORS
+==========================================================*/
+
+.calendar-day.present{
+
+    background:#dcfce7 !important;
+
+    border:1px solid #22c55e !important;
+
+}
+
+.calendar-day.present::after{
+
+    content:'✔' !important;
+
+    position:absolute !important;
+
+    bottom:8px !important;
+
+    left:10px !important;
+
+    color:#16a34a !important;
+
+    font-size:16px !important;
+
+}
+
+.calendar-day.absent{
+
+    background:#fee2e2 !important;
+
+    border:1px solid #ef4444 !important;
+
+}
+
+.calendar-day.absent::after{
+
+    content:'✖' !important;
+
+    position:absolute !important;
+
+    bottom:8px !important;
+
+    left:10px !important;
+
+    color:#dc2626 !important;
+
+}
+
+.calendar-day.leave{
+
+    background:#fef3c7 !important;
+
+    border:1px solid #f59e0b !important;
+
+}
+
+.calendar-day.leave::after{
+
+    content:'L' !important;
+
+    position:absolute !important;
+
+    bottom:8px !important;
+
+    left:10px !important;
+
+    color:#d97706 !important;
+
+    font-weight:700 !important;
+
+}
+
+.calendar-day.holiday{
+
+    background:#ede9fe !important;
+
+    border:1px solid #8b5cf6 !important;
+
+}
+
+.calendar-day.holiday::after{
+
+    content:'H' !important;
+
+    position:absolute !important;
+
+    bottom:8px !important;
+
+    left:10px !important;
+
+    color:#7c3aed !important;
+
+    font-weight:700 !important;
+
+}
+
+.calendar-day.halfday{
+
+    background:#dbeafe !important;
+
+    border:1px solid #0ea5e9 !important;
+
+}
+
+.calendar-day.halfday::after{
+
+    content:'½' !important;
+
+    position:absolute !important;
+
+    bottom:8px !important;
+
+    left:10px !important;
+
+    color:#0284c7 !important;
+
+    font-weight:700 !important;
+
+}
+
+
+/*=========================================================
+    CALENDAR LEGEND
+==========================================================*/
+
+.calendar-legend{
+
+    display:flex !important;
+
+    flex-wrap:wrap !important;
+
+    gap:18px !important;
+
+    padding:20px 25px !important;
+
+    border-top:1px solid #edf2f7 !important;
+
+    background:#fafbfc !important;
+
+}
+
+.calendar-legend .legend-item{
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    gap:8px !important;
+
+    font-size:14px !important;
+
+    color:#475569 !important;
+
+}
+
+.calendar-dot{
+
+    width:14px !important;
+
+    height:14px !important;
+
+    border-radius:50% !important;
+
+}
+
+.dot-present{background:#22c55e !important;}
+.dot-absent{background:#ef4444 !important;}
+.dot-leave{background:#f59e0b !important;}
+.dot-holiday{background:#8b5cf6 !important;}
+.dot-halfday{background:#0ea5e9 !important;}
+
+
+/*=========================================================
+    RESPONSIVE
+==========================================================*/
+
+@media(max-width:992px){
+
+    .calendar-header{
+
+        flex-direction:column !important;
+
+        gap:18px !important;
+
+        align-items:flex-start !important;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .calendar-body{
+
+        padding:18px !important;
+
+    }
+
+    .calendar-day{
+
+        min-height:75px !important;
+
+    }
+
+    .calendar-weekdays div{
+
+        font-size:12px !important;
+
+        padding:10px 5px !important;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .calendar-grid{
+
+        gap:6px !important;
+
+    }
+
+    .calendar-day{
+
+        min-height:60px !important;
+
+        padding:6px !important;
+
+    }
+
+    .calendar-day span{
+
+        font-size:13px !important;
+
+    }
+
+    .calendar-navigation{
+
+        width:100% !important;
+
+        justify-content:center !important;
+
+    }
+
+    .current-month{
+
+        min-width:auto !important;
+
+        font-size:14px !important;
+
+    }
+
+}
+
+/*=========================================================
+    SECTION 3.2A.1
+    PREMIUM GLASSMORPHISM CALENDAR CARD
+    HRMS EMPLOYEE DASHBOARD
+==========================================================*/
+
+
+/*=========================================================
+    CALENDAR WRAPPER
+==========================================================*/
+
+.calendar-wrapper{
+
+    position:relative !important;
+
+    width:100% !important;
+
+    margin-bottom:30px !important;
+
+}
+
+
+/*=========================================================
+    PREMIUM GLASS CARD
+==========================================================*/
+
+.calendar-card{
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    background:rgba(255,255,255,.82) !important;
+
+    backdrop-filter:blur(18px) !important;
+
+    -webkit-backdrop-filter:blur(18px) !important;
+
+    border:1px solid rgba(255,255,255,.35) !important;
+
+    border-radius:26px !important;
+
+    box-shadow:
+
+        0 20px 45px rgba(15,23,42,.08),
+
+        0 10px 25px rgba(37,99,235,.08) !important;
+
+    transition:all .40s ease !important;
+
+}
+
+
+/*=========================================================
+    HOVER EFFECT
+==========================================================*/
+
+.calendar-card:hover{
+
+    transform:translateY(-8px) !important;
+
+    box-shadow:
+
+        0 30px 60px rgba(37,99,235,.18),
+
+        0 15px 30px rgba(0,0,0,.10) !important;
+
+}
+
+
+/*=========================================================
+    TOP GRADIENT BORDER
+==========================================================*/
+
+.calendar-card::before{
+
+    content:"" !important;
+
+    position:absolute !important;
+
+    top:0 !important;
+
+    left:0 !important;
+
+    width:100% !important;
+
+    height:6px !important;
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        #2563eb,
+
+        #3b82f6,
+
+        #0ea5e9,
+
+        #06b6d4
+
+    ) !important;
+
+}
+
+
+/*=========================================================
+    DECORATIVE CIRCLES
+==========================================================*/
+
+.calendar-card::after{
+
+    content:"" !important;
+
+    position:absolute !important;
+
+    width:260px !important;
+
+    height:260px !important;
+
+    border-radius:50% !important;
+
+    background:
+
+    radial-gradient(
+
+        rgba(59,130,246,.18),
+
+        transparent 70%
+
+    ) !important;
+
+    top:-120px !important;
+
+    right:-90px !important;
+
+    pointer-events:none !important;
+
+}
+
+
+/*=========================================================
+    BACKGROUND SHAPES
+==========================================================*/
+
+.calendar-bg-shape-1{
+
+    position:absolute !important;
+
+    width:220px !important;
+
+    height:220px !important;
+
+    border-radius:50% !important;
+
+    background:
+
+    radial-gradient(
+
+        rgba(14,165,233,.15),
+
+        transparent
+
+    ) !important;
+
+    left:-120px !important;
+
+    bottom:-100px !important;
+
+    pointer-events:none !important;
+
+}
+
+.calendar-bg-shape-2{
+
+    position:absolute !important;
+
+    width:120px !important;
+
+    height:120px !important;
+
+    border-radius:50% !important;
+
+    background:
+
+    radial-gradient(
+
+        rgba(37,99,235,.15),
+
+        transparent
+
+    ) !important;
+
+    top:45% !important;
+
+    right:-40px !important;
+
+    pointer-events:none !important;
+
+}
+
+
+/*=========================================================
+    INNER CONTENT
+==========================================================*/
+
+.calendar-content{
+
+    position:relative !important;
+
+    z-index:10 !important;
+
+    padding:30px !important;
+
+}
+
+
+/*=========================================================
+    GLASS INNER PANEL
+==========================================================*/
+
+.calendar-inner{
+
+    background:rgba(255,255,255,.55) !important;
+
+    backdrop-filter:blur(10px) !important;
+
+    -webkit-backdrop-filter:blur(10px) !important;
+
+    border-radius:20px !important;
+
+    border:1px solid rgba(255,255,255,.40) !important;
+
+    padding:25px !important;
+
+}
+
+
+/*=========================================================
+    LIGHT REFLECTION
+==========================================================*/
+
+.calendar-reflection{
+
+    position:absolute !important;
+
+    top:-120px !important;
+
+    left:-80px !important;
+
+    width:280px !important;
+
+    height:380px !important;
+
+    transform:rotate(-25deg) !important;
+
+    background:
+
+    linear-gradient(
+
+        rgba(255,255,255,.45),
+
+        rgba(255,255,255,0)
+
+    ) !important;
+
+    pointer-events:none !important;
+
+}
+
+
+/*=========================================================
+    PREMIUM SHADOW
+==========================================================*/
+
+.calendar-shadow{
+
+    position:absolute !important;
+
+    left:25px !important;
+
+    right:25px !important;
+
+    bottom:-15px !important;
+
+    height:25px !important;
+
+    border-radius:50% !important;
+
+    background:rgba(37,99,235,.12) !important;
+
+    filter:blur(18px) !important;
+
+    z-index:-1 !important;
+
+}
+
+
+/*=========================================================
+    FLOAT ANIMATION
+==========================================================*/
+
+@keyframes calendarFloat{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-5px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.calendar-card{
+
+    animation:calendarFloat 6s ease-in-out infinite !important;
+
+}
+
+
+/*=========================================================
+    SHIMMER ANIMATION
+==========================================================*/
+
+.calendar-card .shine{
+
+    position:absolute !important;
+
+    top:0 !important;
+
+    left:-120% !important;
+
+    width:50% !important;
+
+    height:100% !important;
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.45),
+
+        transparent
+
+    ) !important;
+
+    transform:skewX(-25deg) !important;
+
+    transition:1.2s !important;
+
+}
+
+.calendar-card:hover .shine{
+
+    left:140% !important;
+
+}
+
+
+/*=========================================================
+    BORDER GLOW
+==========================================================*/
+
+.calendar-card:hover{
+
+    border-color:rgba(37,99,235,.35) !important;
+
+}
+
+
+/*=========================================================
+    RESPONSIVE
+==========================================================*/
+
+@media(max-width:992px){
+
+    .calendar-content{
+
+        padding:22px !important;
+
+    }
+
+    .calendar-inner{
+
+        padding:20px !important;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .calendar-card{
+
+        border-radius:20px !important;
+
+    }
+
+    .calendar-content{
+
+        padding:18px !important;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .calendar-content{
+
+        padding:15px !important;
+
+    }
+
+    .calendar-inner{
+
+        padding:15px !important;
+
+    }
+
+}
