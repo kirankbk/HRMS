@@ -929,23 +929,23 @@ function handleSaveEmployeeError(error) {
  * Save Button
  *********************************************************************/
 
-document
+//document
 
-// .getElementById("btnSaveEmployee")
+// // .getElementById("btnSaveEmployee")
 
-// .addEventListener(
+// // .addEventListener(
 
-    // "click",
+    // // "click",
 
-    // function (e) {
+    // // function (e) {
 
-        // e.preventDefault();
+        // // e.preventDefault();
 
-        // saveEmployee();
+        // // saveEmployee();
 
-    // }
+    // // }
 
-// );
+// // );
 /********************************************************************
  * Reset Employee Form
  ********************************************************************/
@@ -1968,18 +1968,25 @@ salaryInputs.forEach(id => {
 
 });
 
-		// document
-// .getElementById("editEmployeeForm")
-// .addEventListener(
-    // "submit",
-    // function (e) {
+document.getElementById("Addbtn")
+ .addEventListener(
+    "click",
+     function (e) {
 
-        // e.preventDefault();
+        e.preventDefault();
+window.location.href="AddEmployee.html";
+        // const modal = new bootstrap.Modal(
 
-        // updateEmployee();
+            // document.getElementById(
+                // "employeeProfileModal"
+            // )
 
-    // }
-// );
+        // );
+
+        // modal.show();
+
+    }
+ );
   const sameadd = document.getElementById("sameAddress");
   if (sameadd) {
     sameadd.addEventListener("change", function () {
